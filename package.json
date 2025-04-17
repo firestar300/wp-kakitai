@@ -1,0 +1,28 @@
+{
+	"name": "wp-kakitai",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --blocks-manifest",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --blocks-manifest",
+		"start:env": "wp-env start --config=./wp-env.json",
+		"stop:env": "wp-env stop --config=./wp-env.json"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.22.0",
+		"@wordpress/scripts": "^30.15.0",
+		"copy-webpack-plugin": "^13.0.0",
+		"csv-parse": "^5.6.0"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^10.22.0"
+	}
+}

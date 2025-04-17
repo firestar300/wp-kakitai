@@ -1,0 +1,27 @@
+# grumphp.yml
+grumphp:
+    tasks:
+        git_blacklist:
+            keywords:
+                - "var_dump("
+                - "var_export("
+            whitelist_patterns: []
+            triggered_by: ['php']
+            regexp_type: G
+        composer:
+            no_check_all: true
+            no_check_publish: true
+            no_local_repository: true
+        phplint:
+            exclude: ['bin', 'vendor', 'node_modules', 'build', 'artifacts']
+            jobs: ~
+            triggered_by: ['php']
+        phpcs:
+            standard: ['phpcs.xml.dist']
+            triggered_by: ['php']
+        psalm:
+            config: psalm.xml.dist
+            triggered_by: ['php']
+            show_info: true
+    testsuites: []
+    extensions: []

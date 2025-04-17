@@ -1,0 +1,9 @@
+path: web/wp
+server:
+  docroot: web
+color: true
+
+# Disable dangerous commands \o/
+disabled_commands:
+  - db drop
+  - db reset

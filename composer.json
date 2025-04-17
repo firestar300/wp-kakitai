@@ -1,0 +1,71 @@
+{
+	"name": "firestar300/wp-kakitai",
+	"description": "Provide Furigana for Japanese text.",
+	"minimum-stability": "stable",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "firestar300"
+		}
+	],
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpro/grumphp-shim": true,
+			"roots/wordpress-core-installer": true
+		}
+	},
+	"prefer-stable": true,
+	"require": {
+		"php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+		"ext-json": "*",
+		"beapi/container": "^2.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"humanmade/psalm-plugin-wordpress": "^3.0",
+		"php-parallel-lint/php-parallel-lint": "^1.3",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpro/grumphp-shim": "^2.0",
+		"phpspec/prophecy": "^1.19",
+		"phpspec/prophecy-phpunit": "^2.2",
+		"roave/security-advisories": "dev-latest",
+		"vimeo/psalm": "^5.25",
+		"wp-coding-standards/wpcs": "^3.0",
+		"wp-phpunit/wp-phpunit": "^6.7",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Firestar300\\WPKakitai\\": "includes"
+		}
+	},
+	"scripts": {
+		"cs": "./vendor/bin/phpcs",
+		"cbf": "./vendor/bin/phpcbf",
+		"psalm": "./vendor/bin/psalm",
+		"lint": [
+			"bin/php-lint",
+			"@psalm",
+			"@cs"
+		]
+	},
+	"scripts-descriptions": {
+		"cs": "Run PHP CodeSniffer on plugin codebase using our ruleset.",
+		"cbf": "Run PHP Code Beautifier and Fixer on plugin codebase using our ruleset.",
+		"psalm": "Run psalm on plugin codebase using our ruleset.",
+		"lint": "Run all lint tasks."
+	},
+	"extra": {
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}/": [
+				"type:wordpress-plugin"
+			]
+		}
+	}
+}
