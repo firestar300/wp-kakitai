@@ -1,5 +1,7 @@
 # WP Kakitai (書きたい)
 
+[![WP Kakitai](./.github/banner.png)](https://github.com/firestar300/wp-kakitai/)
+
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-blue.svg)](https://github.com/firestar300/wp-kakitai/blob/main/LICENSE)
 [![WordPress](https://img.shields.io/badge/WordPress-6.7%2B-blue.svg)](https://wordpress.org/)
 
