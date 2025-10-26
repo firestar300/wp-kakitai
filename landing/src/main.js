@@ -23,6 +23,12 @@ if (mobileMenuButton && mobileMenu) {
 }
 
 // Hero animations
+// Set initial state
+gsap.set(['#hero-badge', '#hero-title', '#hero-description', '#hero-buttons', '#hero-stats'], {
+  opacity: 0,
+  y: 20,
+});
+
 gsap.timeline({ defaults: { ease: 'power3.out' } })
   .to('#hero-badge', { opacity: 1, y: 0, duration: 0.6, delay: 0.2 })
   .to('#hero-title', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
