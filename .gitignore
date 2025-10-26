@@ -31,3 +31,6 @@ node_modules/
 
 # build directory
 build/
+
+# Landing page build output
+dist/

@@ -1,0 +1,20 @@
+{
+  "name": "wp-kakitai-landing",
+  "version": "1.0.0",
+  "description": "Landing page for WP Kakitai WordPress plugin",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/postbuild.js",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.10"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  }
+}

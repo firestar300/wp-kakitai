@@ -47,7 +47,8 @@ registerFormatType( 'wp-kakitai/furigana', {
 					// If the text already contains furigana, remove them
 					if ( hasFurigana ) {
 						// Use DOM to cleanly remove ruby tags
-						const blockContent = selectedBlock?.attributes?.content || '';
+						const blockContent =
+							selectedBlock?.attributes?.content || '';
 						const temp = document.createElement( 'div' );
 						temp.innerHTML = blockContent;
 
@@ -56,10 +57,16 @@ registerFormatType( 'wp-kakitai/furigana', {
 						rubyElements.forEach( ( ruby ) => {
 							// Extract only the text, without rt/rp
 							const baseText = Array.from( ruby.childNodes )
-								.filter( ( node ) => node.nodeName !== 'RT' && node.nodeName !== 'RP' )
+								.filter(
+									( node ) =>
+										node.nodeName !== 'RT' &&
+										node.nodeName !== 'RP'
+								)
 								.map( ( node ) => node.textContent )
 								.join( '' );
-							ruby.replaceWith( document.createTextNode( baseText ) );
+							ruby.replaceWith(
+								document.createTextNode( baseText )
+							);
 						} );
 
 						onChange(
@@ -84,11 +91,20 @@ registerFormatType( 'wp-kakitai/furigana', {
 
 						// Handle cases where the selection is not the full text
 						if ( value.start > 0 && value.end === maxLength ) {
-							newHtml = value.text.slice( 0, value.start ) + furiganaHtml;
-						} else if ( value.start === 0 && value.end < maxLength ) {
-							newHtml = furiganaHtml + value.text.slice( value.end );
+							newHtml =
+								value.text.slice( 0, value.start ) +
+								furiganaHtml;
+						} else if (
+							value.start === 0 &&
+							value.end < maxLength
+						) {
+							newHtml =
+								furiganaHtml + value.text.slice( value.end );
 						} else if ( value.start > 0 && value.end < maxLength ) {
-							newHtml = value.text.slice( 0, value.start ) + furiganaHtml + value.text.slice( value.end );
+							newHtml =
+								value.text.slice( 0, value.start ) +
+								furiganaHtml +
+								value.text.slice( value.end );
 						}
 
 						// Apply the change

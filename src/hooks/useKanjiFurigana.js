@@ -57,7 +57,9 @@ export const useKanjiFurigana = () => {
 		const initKuromoji = async () => {
 			try {
 				if ( ! window.wpKakitai || ! window.wpKakitai.pluginUrl ) {
-					throw new Error( 'Missing configuration: window.wpKakitai.pluginUrl' );
+					throw new Error(
+						'Missing configuration: window.wpKakitai.pluginUrl'
+					);
 				}
 
 				// Extract the relative path from the full URL
