@@ -1,0 +1,51 @@
+# Exclude development files from plugin ZIP
+# Used by: npm run plugin-zip
+
+# Version control
+.git
+.gitignore
+.github
+
+# Development
+node_modules
+src
+landing
+vendor
+
+# Build configs
+webpack.config.js
+package.json
+package-lock.json
+composer.json
+composer.lock
+phpcs.xml.dist
+grumphp.yml
+wp-cli.yml
+
+# Documentation (keep only readme.txt)
+CONTRIBUTING.md
+RELEASE.md
+WORDPRESS_ORG.md
+QUICK_START.md
+
+# Testing
+tests
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Other
+.editorconfig
+.eslintrc.js
+.prettierrc

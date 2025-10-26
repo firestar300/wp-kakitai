@@ -16,4 +16,3 @@ try {
   console.error('Error creating .nojekyll file:', error);
   process.exit(1);
 }
-
