@@ -1,0 +1,82 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Create plugin ZIP
+        run: |
+          # Create temporary folder for the plugin
+          mkdir -p wp-kakitai
+
+          # Copy necessary files
+          cp -r build wp-kakitai/
+          cp wp-kakitai.php wp-kakitai/
+          cp readme.txt wp-kakitai/
+          cp LICENSE wp-kakitai/
+
+          # Create the archive
+          zip -r wp-kakitai.zip wp-kakitai
+
+          # Verify contents
+          echo "📦 Archive contents:"
+          unzip -l wp-kakitai.zip
+
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: wp-kakitai.zip
+          generate_release_notes: true
+          name: Version ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            ## 🎉 Version ${{ steps.get_version.outputs.VERSION }}
+
+            ### Installation
+
+            1. Download the `wp-kakitai.zip` file
+            2. In WordPress, go to Plugins → Add New
+            3. Click "Upload Plugin"
+            4. Select the ZIP file and click "Install Now"
+            5. Activate the plugin
+
+            ### Usage
+
+            In the Gutenberg editor:
+            1. Select Japanese text containing kanji
+            2. Click the "Furigana" button (language icon) in the toolbar
+            3. Furigana are automatically added
+            4. Click again to remove them
+
+            ---
+
+            📝 See the [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for more details.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

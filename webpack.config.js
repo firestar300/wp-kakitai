@@ -25,7 +25,7 @@ module.exports = {
 				},
 			],
 		} ),
-		// Rendre Buffer disponible globalement
+		// Make Buffer globally available
 		new webpack.ProvidePlugin( {
 			Buffer: [ 'buffer', 'Buffer' ],
 			process: 'process/browser',

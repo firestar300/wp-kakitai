@@ -28,12 +28,12 @@ registerFormatType( 'wp-kakitai/furigana', {
 			return null;
 		}
 
-		// Vérifier si le texte sélectionné contient déjà des balises ruby
+		// Check if the selected text already contains ruby tags
 		const checkForRubyTags = () => {
-			// Obtenir le contenu HTML du bloc actuel
+			// Get the HTML content of the current block
 			const blockContent = selectedBlock?.attributes?.content || '';
 
-			// Vérifier s'il y a des balises ruby dans le contenu
+			// Check if there are ruby tags in the content
 			return /<ruby>/i.test( blockContent );
 		};
 
@@ -44,17 +44,17 @@ registerFormatType( 'wp-kakitai/furigana', {
 				icon={ <Icon icon={ language } /> }
 				title={ __( 'Furigana', 'wp-kakitai' ) }
 				onClick={ async () => {
-					// Si le texte contient déjà des furigana, les retirer
+					// If the text already contains furigana, remove them
 					if ( hasFurigana ) {
-						// Utiliser le DOM pour retirer proprement les balises ruby
+						// Use DOM to cleanly remove ruby tags
 						const blockContent = selectedBlock?.attributes?.content || '';
 						const temp = document.createElement( 'div' );
 						temp.innerHTML = blockContent;
 
-						// Remplacer chaque balise ruby par son texte de base
+						// Replace each ruby tag with its base text
 						const rubyElements = temp.querySelectorAll( 'ruby' );
 						rubyElements.forEach( ( ruby ) => {
-							// Extraire seulement le texte, sans les rt/rp
+							// Extract only the text, without rt/rp
 							const baseText = Array.from( ruby.childNodes )
 								.filter( ( node ) => node.nodeName !== 'RT' && node.nodeName !== 'RP' )
 								.map( ( node ) => node.textContent )
@@ -70,7 +70,7 @@ registerFormatType( 'wp-kakitai/furigana', {
 						return;
 					}
 
-					// Sinon, ajouter les furigana
+					// Otherwise, add furigana
 					if ( ! isReady || ! selectedText ) {
 						return;
 					}
@@ -78,11 +78,11 @@ registerFormatType( 'wp-kakitai/furigana', {
 					try {
 						const furiganaHtml = await addFurigana( selectedText );
 
-						// Reconstruire le texte complet
+						// Reconstruct the full text
 						const maxLength = value.text.length;
 						let newHtml = furiganaHtml;
 
-						// Gestion des cas où la sélection n'est pas le texte complet
+						// Handle cases where the selection is not the full text
 						if ( value.start > 0 && value.end === maxLength ) {
 							newHtml = value.text.slice( 0, value.start ) + furiganaHtml;
 						} else if ( value.start === 0 && value.end < maxLength ) {
@@ -91,14 +91,14 @@ registerFormatType( 'wp-kakitai/furigana', {
 							newHtml = value.text.slice( 0, value.start ) + furiganaHtml + value.text.slice( value.end );
 						}
 
-						// Appliquer le changement
+						// Apply the change
 						onChange(
 							create( {
 								html: newHtml,
 							} )
 						);
 					} catch ( err ) {
-						console.error( 'Erreur lors de l\'ajout des furigana:', err );
+						console.error( 'Error adding furigana:', err );
 					}
 				} }
 				isActive={ hasFurigana }
