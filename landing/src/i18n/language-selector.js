@@ -98,10 +98,27 @@ function attachSelectorEvents(selector) {
 
   // Handle language selection
   selector.querySelectorAll('.language-option').forEach(option => {
-    option.addEventListener('click', () => {
+    option.addEventListener('click', (e) => {
+      e.preventDefault();
       const lang = option.dataset.lang;
       closeDropdown();
-      changeLanguage(lang);
+
+      // Get current page path
+      const currentPath = window.location.pathname;
+      const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+
+      // Determine target page
+      let targetPage;
+      if (lang === 'en') {
+        targetPage = basePath + 'index.html';
+      } else if (lang === 'fr') {
+        targetPage = basePath + 'fr.html';
+      } else if (lang === 'ja') {
+        targetPage = basePath + 'ja.html';
+      }
+
+      // Redirect to static page
+      window.location.href = targetPage;
     });
   });
 }

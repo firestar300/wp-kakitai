@@ -23,7 +23,13 @@ const STORAGE_KEY = 'wp-kakitai-lang';
  * Get user's preferred language
  */
 function getPreferredLanguage() {
-  // Check localStorage first
+  // Check if we're on a static language page (check body data-lang attribute)
+  const bodyLang = document.body.getAttribute('data-lang');
+  if (bodyLang && translations[bodyLang]) {
+    return bodyLang;
+  }
+
+  // Check localStorage
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored && translations[stored]) {
     return stored;
