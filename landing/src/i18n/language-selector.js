@@ -1,4 +1,4 @@
-import { languages, getCurrentLanguage } from './translations.js';
+import { languages, getCurrentLanguage, changeLanguage } from './translations.js';
 
 /**
  * Get language page URL
@@ -32,6 +32,7 @@ export function createLanguageSelector() {
       aria-label="Select language"
       aria-expanded="false"
       aria-haspopup="true"
+      type="button"
     >
       <span class="text-xl">${currentLanguage.flag}</span>
       <span class="hidden md:inline text-sm font-medium text-gray-700">${currentLanguage.name}</span>
@@ -100,11 +101,30 @@ function attachSelectorEvents(selector) {
   };
   document.addEventListener('click', closeOnOutsideClick);
 
-  // Links handle navigation natively, no need for manual click handlers
-  // Just close dropdown when a link is clicked (for smooth UX)
+  // Handle link clicks
   selector.querySelectorAll('.language-option').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
       closeDropdown();
+
+      // In dev mode (localhost), prevent default and use dynamic content switching
+      // In production (static pages exist), let native navigation work
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        e.preventDefault();
+        const lang = link.getAttribute('lang');
+
+        // Change language dynamically in dev mode
+        changeLanguage(lang);
+
+        // Update the selector UI
+        const container = document.getElementById('language-selector-container');
+        if (container) {
+          container.innerHTML = '';
+          const newSelector = createLanguageSelector();
+          container.appendChild(newSelector);
+          attachSelectorEvents(newSelector);
+        }
+      }
+      // In production, native <a> navigation works (no preventDefault)
     });
   });
 }
