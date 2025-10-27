@@ -98,32 +98,113 @@ function initAnimations() {
     );
   });
 
-  // Demo section interactive animation
+  // Demo section typing animation
+  initTypingAnimation();
+}
+
+// Initialize typing animation for demo section
+function initTypingAnimation() {
+  const demoBefore = document.getElementById('demo-before');
   const demoAfter = document.getElementById('demo-after');
-  if (demoAfter) {
-    ScrollTrigger.create({
-      trigger: '#demo',
-      start: 'top center',
-      onEnter: () => {
-        // Animate each ruby element
-        const rubyElements = demoAfter.querySelectorAll('ruby');
-        gsap.fromTo(
-          rubyElements,
-          {
-            opacity: 0,
-            y: 20,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: 'back.out(1.7)',
+
+  if (!demoBefore || !demoAfter) return;
+
+  // Store original content
+  const beforeText = demoBefore.textContent;
+  const afterHTML = demoAfter.innerHTML;
+
+  // Clear content immediately to avoid flash
+  demoBefore.textContent = '';
+  demoAfter.innerHTML = '';
+
+  // Function to type text character by character
+  function typeText(element, text, delay = 0, speed = 100) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        element.textContent = '';
+        element.classList.add('typing-cursor');
+        let i = 0;
+
+        const typeInterval = setInterval(() => {
+          if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+          } else {
+            clearInterval(typeInterval);
+            element.classList.remove('typing-cursor');
+            resolve();
           }
-        );
-      },
+        }, speed);
+      }, delay);
     });
   }
+
+  // Function to type HTML content with ruby elements
+  function typeHTML(element, html, delay = 0) {
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        element.innerHTML = '';
+        element.classList.add('typing-cursor');
+
+        // Create a temporary container to parse HTML
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+
+        // Process each child node
+        for (const node of temp.childNodes) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            // Type text nodes character by character
+            const text = node.textContent;
+            for (let i = 0; i < text.length; i++) {
+              element.insertAdjacentText('beforeend', text.charAt(i));
+              await new Promise(r => setTimeout(r, 80));
+            }
+          } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'RUBY') {
+            // For ruby elements: insert kanji first, then animate rt
+            const rubyClone = node.cloneNode(true);
+            const rt = rubyClone.querySelector('rt');
+
+            if (rt) {
+              // Hide rt initially
+              rt.style.opacity = '0';
+              rt.style.transform = 'translateY(10px)';
+            }
+
+            // Insert the ruby element (with hidden rt)
+            element.appendChild(rubyClone);
+            await new Promise(r => setTimeout(r, 100));
+
+            // Animate the rt appearing
+            if (rt) {
+              await gsap.to(rt, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'back.out(1.7)'
+              });
+            }
+          }
+        }
+
+        element.classList.remove('typing-cursor');
+        resolve();
+      }, delay);
+    });
+  }
+
+  // Trigger animation when section enters viewport
+  ScrollTrigger.create({
+    trigger: '#demo',
+    start: 'top 70%',
+    once: true,
+    onEnter: async () => {
+      // Type the "before" text first
+      await typeText(demoBefore, beforeText, 0, 80);
+
+      // Then show the "after" with furigana
+      await typeHTML(demoAfter, afterHTML, 300);
+    },
+  });
 }
 
 // Initialize smooth scroll for anchor links
