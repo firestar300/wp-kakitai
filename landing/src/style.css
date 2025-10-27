@@ -46,17 +46,21 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+    background: linear-gradient(to right, #E91E63, #9C27B0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .card-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 115, 170, 0.1),
-                0 2px 4px -1px rgba(0, 115, 170, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(233, 30, 99, 0.1),
+                0 2px 4px -1px rgba(233, 30, 99, 0.06);
   }
 
   .card-shadow-hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 115, 170, 0.15),
-                0 4px 6px -2px rgba(0, 115, 170, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(233, 30, 99, 0.15),
+                0 4px 6px -2px rgba(233, 30, 99, 0.1);
   }
 }
 
