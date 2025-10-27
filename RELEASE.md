@@ -15,54 +15,64 @@ The project uses GitHub Actions to automatically create releases when you push a
 
 ### Step-by-Step Release Process
 
-#### 1. Update CHANGELOG.md
+#### 1. Update Version Numbers Manually
 
-Edit `CHANGELOG.md` to add release notes for the upcoming version:
+Update the version in all files:
+
+```bash
+# For version 1.1.0, update:
+# - package.json: "version": "1.1.0"
+# - wp-kakitai.php: * Version: 1.1.0
+# - wp-kakitai.php: define( 'WP_KAKITAI_VERSION', '1.1.0' );
+# - readme.txt: Stable tag: 1.1.0
+```
+
+#### 2. Update CHANGELOG.md
+
+Add release notes for the new version:
 
 ```markdown
 ## [Unreleased]
 
+## [1.1.0] - 2025-10-27
+
 ### Added
 - New landing page with Sakura Tech design
 - Multilingual support (EN/FR/JA)
-- Typing animations for demo section
 
 ### Changed
 - Updated Japanese font to Mochiy Pop P One
-- Improved feature cards with pink borders
-
-## [1.0.0] - 2025-10-26
-...
 ```
 
-#### 2. Commit CHANGELOG Changes
+#### 3. Commit Changes
 
 ```bash
-git add CHANGELOG.md
-git commit -m "docs: update CHANGELOG for v1.1.0"
+git add -A
+git commit -m "chore: bump version to 1.1.0"
 git push origin main
 ```
 
-#### 3. Create and Push Tag (This triggers the automated build!)
+#### 4. Create and Push Tag
 
 ```bash
-# Create an annotated tag with the desired version
+# Create an annotated tag matching the version
 git tag -a v1.1.0 -m "Release version 1.1.0"
 
 # Push the tag to trigger GitHub Actions
 git push origin v1.1.0
 ```
 
-**That's it!** 🎉 GitHub Actions will automatically:
+**Important:** The workflow will verify that the tag version matches all file versions. If they don't match, the build will fail.
 
-- Extract the version from the tag (e.g., `v1.1.0` → `1.1.0`)
-- Update version numbers in all files (`package.json`, `wp-kakitai.php`, `readme.txt`)
-- Install dependencies
-- Build the plugin (`npm run build`)
-- Create ZIP file with `/build`, `wp-kakitai.php`, `readme.txt`, `LICENSE`
-- Publish the GitHub Release with release notes and ZIP file
+**GitHub Actions will then:**
 
-#### 4. Verify Release
+- ✅ Verify version consistency across all files
+- ✅ Install dependencies
+- ✅ Build the plugin (`npm run build`)
+- ✅ Create ZIP file with `/build`, `wp-kakitai.php`, `readme.txt`, `LICENSE`
+- ✅ Publish the GitHub Release with release notes and ZIP file
+
+#### 5. Verify Release
 
 1. Go to [Releases page](https://github.com/firestar300/wp-kakitai/releases)
 2. Verify the new release is published

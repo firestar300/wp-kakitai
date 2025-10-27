@@ -20,30 +20,47 @@ jobs:
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-      - name: Update version in files
+      - name: Verify version consistency
         run: |
-          VERSION=${{ steps.get_version.outputs.VERSION }}
-          echo "📝 Updating version to $VERSION in all files..."
+          TAG_VERSION=${{ steps.get_version.outputs.VERSION }}
+          echo "🔍 Verifying version consistency..."
+          echo "Tag version: $TAG_VERSION"
 
-          # Update package.json
-          sed -i 's/"version": "[^"]*"/"version": "'$VERSION'"/' package.json
-          echo "✅ Updated package.json"
-
-          # Update wp-kakitai.php (Version header)
-          sed -i 's/\* Version:.*/* Version:           '$VERSION'/' wp-kakitai.php
-          echo "✅ Updated wp-kakitai.php (Version header)"
-
-          # Update wp-kakitai.php (WP_KAKITAI_VERSION constant)
-          sed -i "s/define( 'WP_KAKITAI_VERSION', '[^']*' );/define( 'WP_KAKITAI_VERSION', '$VERSION' );/" wp-kakitai.php
-          echo "✅ Updated wp-kakitai.php (constant)"
-
-          # Update readme.txt if exists
-          if [ -f "readme.txt" ]; then
-            sed -i 's/Stable tag:.*/Stable tag:        '$VERSION'/' readme.txt
-            echo "✅ Updated readme.txt"
+          # Check package.json
+          PACKAGE_VERSION=$(grep -oP '"version": "\K[^"]+' package.json)
+          echo "package.json version: $PACKAGE_VERSION"
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "❌ ERROR: Version in package.json ($PACKAGE_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
           fi
 
-          echo "✨ All versions updated to $VERSION"
+          # Check wp-kakitai.php header
+          PHP_HEADER_VERSION=$(grep -oP '\* Version:\s+\K[\d.\-a-z]+' wp-kakitai.php)
+          echo "wp-kakitai.php header version: $PHP_HEADER_VERSION"
+          if [ "$PHP_HEADER_VERSION" != "$TAG_VERSION" ]; then
+            echo "❌ ERROR: Version in wp-kakitai.php header ($PHP_HEADER_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
+          fi
+
+          # Check wp-kakitai.php constant
+          PHP_CONSTANT_VERSION=$(grep -oP "define\( 'WP_KAKITAI_VERSION', '\K[^']+(?=' \))" wp-kakitai.php)
+          echo "wp-kakitai.php constant version: $PHP_CONSTANT_VERSION"
+          if [ "$PHP_CONSTANT_VERSION" != "$TAG_VERSION" ]; then
+            echo "❌ ERROR: Version in WP_KAKITAI_VERSION constant ($PHP_CONSTANT_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
+          fi
+
+          # Check readme.txt if exists
+          if [ -f "readme.txt" ]; then
+            README_VERSION=$(grep -oP 'Stable tag:\s+\K[\d.\-a-z]+' readme.txt)
+            echo "readme.txt version: $README_VERSION"
+            if [ "$README_VERSION" != "$TAG_VERSION" ]; then
+              echo "❌ ERROR: Version in readme.txt ($README_VERSION) does not match tag ($TAG_VERSION)"
+              exit 1
+            fi
+          fi
+
+          echo "✅ All versions match tag version $TAG_VERSION"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
