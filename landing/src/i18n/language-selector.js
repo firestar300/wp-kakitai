@@ -1,0 +1,129 @@
+import { languages, changeLanguage, getCurrentLanguage } from './translations.js';
+
+/**
+ * Create language selector dropdown
+ */
+export function createLanguageSelector() {
+  const currentLang = getCurrentLanguage();
+  const currentLanguage = languages[currentLang];
+
+  const selector = document.createElement('div');
+  selector.className = 'language-selector relative';
+  selector.innerHTML = `
+    <button
+      class="language-selector-button flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+      aria-label="Select language"
+      aria-expanded="false"
+      aria-haspopup="true"
+    >
+      <span class="text-xl">${currentLanguage.flag}</span>
+      <span class="hidden md:inline text-sm font-medium text-gray-700">${currentLanguage.name}</span>
+      <svg class="w-4 h-4 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+
+    <div class="language-selector-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+      ${Object.entries(languages).map(([code, lang]) => `
+        <button
+          class="language-option w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors ${code === currentLang ? 'bg-primary-50' : ''}"
+          data-lang="${code}"
+        >
+          <span class="text-xl">${lang.flag}</span>
+          <span class="text-sm font-medium text-gray-700">${lang.name}</span>
+          ${code === currentLang ? '<svg class="w-4 h-4 text-primary-600 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
+        </button>
+      `).join('')}
+    </div>
+  `;
+
+  return selector;
+}
+
+/**
+ * Handle language change event
+ */
+function handleLanguageChange() {
+  const container = document.getElementById('language-selector-container');
+  if (!container) return;
+
+  // Clear container and recreate selector
+  container.innerHTML = '';
+  const newSelector = createLanguageSelector();
+  container.appendChild(newSelector);
+
+  // Reattach event listeners
+  attachSelectorEvents(newSelector);
+}
+
+/**
+ * Attach event listeners to selector
+ */
+function attachSelectorEvents(selector) {
+  const button = selector.querySelector('.language-selector-button');
+  const dropdown = selector.querySelector('.language-selector-dropdown');
+  const arrow = button.querySelector('svg');
+
+  function openDropdown() {
+    dropdown.classList.remove('hidden');
+    button.setAttribute('aria-expanded', 'true');
+    arrow.style.transform = 'rotate(180deg)';
+  }
+
+  function closeDropdown() {
+    dropdown.classList.add('hidden');
+    button.setAttribute('aria-expanded', 'false');
+    arrow.style.transform = 'rotate(0deg)';
+  }
+
+  // Toggle dropdown
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = !dropdown.classList.contains('hidden');
+
+    if (isOpen) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+  });
+
+  // Close dropdown when clicking outside
+  const closeOnOutsideClick = (e) => {
+    if (!selector.contains(e.target)) {
+      closeDropdown();
+    }
+  };
+  document.addEventListener('click', closeOnOutsideClick);
+
+  // Handle language selection
+  selector.querySelectorAll('.language-option').forEach(option => {
+    option.addEventListener('click', () => {
+      const lang = option.dataset.lang;
+      closeDropdown();
+      changeLanguage(lang);
+    });
+  });
+}
+
+/**
+ * Initialize language selector functionality
+ */
+export function initLanguageSelector() {
+  const container = document.getElementById('language-selector-container');
+  if (!container) {
+    console.warn('Language selector container not found');
+    return;
+  }
+
+  // Create and insert selector
+  const selector = createLanguageSelector();
+  container.appendChild(selector);
+
+  // Attach event listeners
+  attachSelectorEvents(selector);
+
+  // Listen for language changes (only once)
+  window.removeEventListener('languageChanged', handleLanguageChange);
+  window.addEventListener('languageChanged', handleLanguageChange);
+}

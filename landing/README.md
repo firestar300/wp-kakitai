@@ -1,105 +1,223 @@
 # WP Kakitai Landing Page
 
-Modern, animated landing page for WP Kakitai WordPress plugin.
+Landing page for the WP Kakitai WordPress plugin with SEO-friendly multilingual support.
 
-## 🛠️ Tech Stack
+## Features
 
-- **Vite** - Fast build tool
-- **Tailwind CSS** - Utility-first CSS framework
-- **GSAP** - Animation library with ScrollTrigger
-- **Vanilla JavaScript** - No framework overhead
+- 🌍 **3 Languages**: English, French (Français), Japanese (日本語)
+- 🚀 **SEO-Optimized**: Static HTML pages for each language
+- 🎨 **Modern Design**: Built with Tailwind CSS and GSAP animations
+- 📱 **Responsive**: Works perfectly on all devices
+- ⚡ **Fast**: Optimized build with Vite
 
-## 🚀 Development
+## Multilingual System
 
-### Install Dependencies
+The landing page uses a hybrid approach for optimal SEO and UX:
+
+### SEO Benefits
+
+✅ **Static HTML pages** for each language (index.html, fr.html, ja.html)
+✅ **hreflang tags** in all pages for international SEO
+✅ **Translated meta tags** (title, description, Open Graph, Twitter Cards)
+✅ **Proper lang attributes** on HTML elements
+✅ **Crawlable content** for search engines
+
+### User Experience
+
+✅ **Dynamic language switcher** in navigation
+✅ **Automatic browser language detection**
+✅ **localStorage persistence** for language preference
+✅ **Instant switching** without page reload
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
 
 ```bash
+cd landing
 npm install
 ```
 
-### Start Development Server
+### Development Server
 
 ```bash
 npm run dev
 ```
 
-The landing page will be available at `http://localhost:5173`
+Visit `http://localhost:5173` to see the landing page.
 
-### Build for Production
+### Build
 
 ```bash
 npm run build
 ```
 
-Output will be in the `../dist` directory.
+This will:
 
-### Preview Production Build
+1. Build the site with Vite
+2. Create `.nojekyll` for GitHub Pages
+3. **Generate 3 static HTML pages** with translations:
+   - `dist/index.html` (English - default)
+   - `dist/fr.html` (French)
+   - `dist/ja.html` (Japanese)
+
+### Preview Built Site
 
 ```bash
 npm run preview
 ```
 
-## 📁 Structure
+## Project Structure
 
 ```
 landing/
-├── index.html          # Main HTML file
 ├── src/
-│   ├── main.js         # JavaScript entry point with GSAP animations
-│   └── style.css       # Tailwind CSS with custom styles
-├── package.json        # Dependencies
-├── vite.config.js      # Vite configuration
-├── tailwind.config.js  # Tailwind configuration
-└── postcss.config.js   # PostCSS configuration
+│   ├── main.js                 # Main JavaScript entry point
+│   ├── style.css               # Tailwind CSS
+│   └── i18n/
+│       ├── translations.js     # i18n system core
+│       ├── language-selector.js # Language dropdown component
+│       └── locales/
+│           ├── en.json         # English translations
+│           ├── fr.json         # French translations
+│           └── ja.json         # Japanese translations
+├── scripts/
+│   ├── generate-i18n-pages.js  # Static pages generator
+│   └── postbuild.js            # Post-build tasks
+├── public/
+│   └── wp-kakitai-demo.mp4     # Demo video
+├── index.html                  # Main HTML template
+├── vite.config.js              # Vite configuration
+├── tailwind.config.js          # Tailwind CSS configuration
+└── package.json
 ```
 
-## 🎨 Features
+## Adding/Editing Translations
 
-- **Hero Section** - Animated introduction with gradient text
-- **Demo Section** - Interactive furigana demonstration
-- **Features Grid** - 6 key features with icons
-- **Screenshots** - Plugin screenshots from WordPress.org assets
-- **CTA Section** - Download and documentation links
-- **Responsive Design** - Mobile-first approach
-- **Smooth Animations** - GSAP-powered scroll animations
-- **Fast Loading** - Optimized build with Vite
+### 1. Edit JSON Files
 
-## 🌐 Deployment
+Translations are stored in `src/i18n/locales/`:
 
-The landing page is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+- `en.json` - English
+- `fr.json` - French
+- `ja.json` - Japanese
 
-**Live URL**: `https://firestar300.github.io/wp-kakitai/`
+Example structure:
 
-## 🎨 Customization
-
-### Colors
-
-Edit `tailwind.config.js` to change the color scheme:
-
-```javascript
-colors: {
-  primary: {
-    600: '#0073aa', // Main blue
-    700: '#005177', // Darker blue
+```json
+{
+  "nav": {
+    "features": "Features",
+    "demo": "Demo"
   },
+  "hero": {
+    "title": {
+      "line1": "Kanji to Furigana,",
+      "line2": "Instantly"
+    }
+  }
 }
 ```
 
-### Animations
+### 2. Use in HTML
 
-Edit `src/main.js` to modify GSAP animations:
+Add `data-i18n` attribute with the translation key:
 
-```javascript
-gsap.timeline()
-  .to('#hero-title', { opacity: 1, duration: 0.8 })
-  .to('#hero-description', { opacity: 1, duration: 0.8 }, '-=0.6');
+```html
+<h1 data-i18n="hero.title.line1">Kanji to Furigana,</h1>
 ```
 
-### Content
+For HTML content (like spans, links), add `data-i18n-html`:
 
-Edit `index.html` to change text content, links, and structure.
+```html
+<p data-i18n="hero.description" data-i18n-html>
+  Text with <span>HTML</span>
+</p>
+```
 
-## 📄 License
+### 3. Rebuild
 
-GPL-2.0-or-later - Same as WP Kakitai plugin
+After editing translations:
 
+```bash
+npm run build
+```
+
+The static pages will be automatically regenerated with new translations.
+
+## SEO Configuration
+
+### hreflang Links
+
+Automatically added to all pages:
+
+```html
+<link rel="alternate" hreflang="en" href="https://.../">
+<link rel="alternate" hreflang="fr" href="https://.../fr.html">
+<link rel="alternate" hreflang="ja" href="https://.../ja.html">
+<link rel="alternate" hreflang="x-default" href="https://.../">
+```
+
+### Meta Tags
+
+Each page has translated:
+
+- `<title>`
+- `<meta name="description">`
+- `<meta property="og:title">`
+- `<meta property="og:description">`
+- `<meta name="twitter:title">`
+- `<meta name="twitter:description">`
+
+### URL Structure
+
+```
+Landing Page URL/           → English (default)
+Landing Page URL/fr.html    → French
+Landing Page URL/ja.html    → Japanese
+```
+
+## Deployment
+
+### GitHub Pages
+
+The project is configured for GitHub Pages deployment:
+
+1. Push to your repository
+2. Enable GitHub Pages in repository settings
+3. Select the `main` branch and `/dist` folder
+4. Your site will be available at: `https://username.github.io/wp-kakitai/landing/`
+
+The build process automatically:
+
+- Creates `.nojekyll` to prevent Jekyll processing
+- Generates all language versions
+- Sets correct base path in `vite.config.js`
+
+## Browser Support
+
+- ✅ Chrome/Edge (latest 2 versions)
+- ✅ Firefox (latest 2 versions)
+- ✅ Safari (latest 2 versions)
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Technologies
+
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **GSAP** - Animation library
+- **jsdom** - HTML parsing for static generation
+- **Vanilla JavaScript** - No framework dependencies
+
+## License
+
+GPL-2.0 - Same as WordPress
+
+## Author
+
+[@firestar300](https://github.com/firestar300)

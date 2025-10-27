@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "features": "機能",
+    "demo": "デモ",
+    "howItWorks": "使い方",
+    "download": "ダウンロード"
+  },
+  "hero": {
+    "badge": "WordPressプラグイン",
+    "title": {
+      "line1": "漢字からふりがなへ、",
+      "line2": "瞬時に"
+    },
+    "description": "日本語の漢字に<span class=\"font-japanese font-medium text-primary-600\">ふりがな</span>（振り仮名）を自動的に追加します。学習者、学生、若い読者に最適です。",
+    "downloadButton": "プラグインをダウンロード",
+    "githubButton": "GitHubで見る",
+    "stats": {
+      "wordpress": "WordPress 6.7+",
+      "poweredBy": "Kuromoji.js搭載",
+      "license": "GPL-2.0ライセンス"
+    }
+  },
+  "demo": {
+    "title": "実際の動作を見る",
+    "subtitle": "ワンクリックで漢字にふりがなを追加",
+    "without": "ふりがななし：",
+    "with": "ふりがなあり：",
+    "features": "ワンクリック • 自動検出 • 標準HTML"
+  },
+  "features": {
+    "title": "強力な機能",
+    "subtitle": "日本語コンテンツを読むために学習者が必要なすべて",
+    "items": {
+      "oneClick": {
+        "title": "ワンクリック追加",
+        "description": "日本語テキストを選択し、Gutenbergツールバーからワンクリックでふりがなを追加できます。"
+      },
+      "toggle": {
+        "title": "オン・オフ切り替え",
+        "description": "もう一度クリックするとふりがなを削除できます。コンテンツの編集と更新が簡単です。"
+      },
+      "smart": {
+        "title": "スマート検出",
+        "description": "Kuromoji.jsにより、日本語テキストの正確な形態素解析を実現します。"
+      },
+      "standardHtml": {
+        "title": "標準HTML",
+        "description": "ruby、rt、rpタグを使用して最大限のブラウザ互換性を実現。特別なCSSは不要です。"
+      },
+      "native": {
+        "title": "ネイティブ統合",
+        "description": "WordPress Gutenbergエディタにシームレスに統合。段落ブロックと見出しブロックで動作します。"
+      },
+      "performance": {
+        "title": "高速パフォーマンス",
+        "description": "インテリジェントなキャッシュを備えたクライアント側処理。サイトのフロントエンド速度に影響を与えません。"
+      }
+    }
+  },
+  "steps": {
+    "title": "使い方",
+    "subtitle": "コンテンツにふりがなを追加する3つの簡単なステップ",
+    "step1": {
+      "title": "テキストを選択",
+      "description": "Gutenbergエディタでふりがなを追加したい日本語テキストをハイライトします"
+    },
+    "step2": {
+      "title": "ボタンをクリック",
+      "description": "ツールバーのふりがなボタンをクリックするだけです"
+    },
+    "step3": {
+      "title": "完了！",
+      "description": "選択範囲内のすべての漢字にふりがなが自動的に追加されます"
+    }
+  },
+  "cta": {
+    "title": "始める準備はできましたか？",
+    "subtitle": "WP Kakitaiをダウンロードして、学習者が自信を持って日本語コンテンツを読めるようにしましょう。",
+    "downloadButton": "プラグインをダウンロード",
+    "documentationButton": "ドキュメントを見る",
+    "footer": "無料 • オープンソース • GPL-2.0ライセンス"
+  },
+  "footer": {
+    "tagline": "漢字に瞬時にふりがなを追加。日本語学習者と学生に最適です。",
+    "resources": {
+      "title": "リソース",
+      "github": "GitHubリポジトリ",
+      "download": "ダウンロード",
+      "changelog": "変更履歴"
+    },
+    "documentation": {
+      "title": "ドキュメント",
+      "gettingStarted": "はじめに",
+      "contributing": "貢献する",
+      "reportIssues": "問題を報告"
+    },
+    "legal": {
+      "title": "法的情報",
+      "license": "ライセンス（GPL-2.0）",
+      "author": "作者"
+    },
+    "copyright": "© 2025 WP Kakitai. 日本語学習者と学生のために❤️を込めて作成。"
+  }
+}

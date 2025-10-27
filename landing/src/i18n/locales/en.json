@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "features": "Features",
+    "demo": "Demo",
+    "howItWorks": "How It Works",
+    "download": "Download"
+  },
+  "hero": {
+    "badge": "WordPress Plugin",
+    "title": {
+      "line1": "Kanji to Furigana,",
+      "line2": "Instantly"
+    },
+    "description": "Automatically add <span class=\"font-japanese font-medium text-primary-600\">furigana</span> (振り仮名) reading guides to Japanese kanji. Perfect for learners, students, and young readers.",
+    "downloadButton": "Download Plugin",
+    "githubButton": "View on GitHub",
+    "stats": {
+      "wordpress": "WordPress 6.7+",
+      "poweredBy": "Powered by Kuromoji.js",
+      "license": "GPL-2.0 License"
+    }
+  },
+  "demo": {
+    "title": "See It In Action",
+    "subtitle": "From kanji to furigana with one click",
+    "without": "Without furigana:",
+    "with": "With furigana:",
+    "features": "One click • Automatic detection • Standard HTML"
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything learners need to read Japanese content",
+    "items": {
+      "oneClick": {
+        "title": "One-Click Addition",
+        "description": "Select Japanese text and add furigana with a single click from the Gutenberg toolbar."
+      },
+      "toggle": {
+        "title": "Toggle On/Off",
+        "description": "Click again to remove furigana. Perfect for editing and updating content easily."
+      },
+      "smart": {
+        "title": "Smart Detection",
+        "description": "Powered by Kuromoji.js for accurate morphological analysis of Japanese text."
+      },
+      "standardHtml": {
+        "title": "Standard HTML",
+        "description": "Uses ruby, rt, and rp tags for maximum browser compatibility. No special CSS needed."
+      },
+      "native": {
+        "title": "Native Integration",
+        "description": "Seamlessly integrated into WordPress Gutenberg editor. Works with Paragraph and Heading blocks."
+      },
+      "performance": {
+        "title": "Fast Performance",
+        "description": "Client-side processing with intelligent caching. No impact on your site's front-end speed."
+      }
+    }
+  },
+  "steps": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to add furigana to your content",
+    "step1": {
+      "title": "Select Text",
+      "description": "Highlight the Japanese text you want to add furigana to in the Gutenberg editor"
+    },
+    "step2": {
+      "title": "Click Button",
+      "description": "Click the furigana button in the toolbar - it's that simple"
+    },
+    "step3": {
+      "title": "Done!",
+      "description": "Furigana is automatically added to all kanji in your selection"
+    }
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Download WP Kakitai and help learners read Japanese content with confidence.",
+    "downloadButton": "Download Plugin",
+    "documentationButton": "View Documentation",
+    "footer": "Free • Open Source • GPL-2.0 License"
+  },
+  "footer": {
+    "tagline": "Add furigana to kanji instantly. Perfect for Japanese learners and students.",
+    "resources": {
+      "title": "Resources",
+      "github": "GitHub Repository",
+      "download": "Download",
+      "changelog": "Changelog"
+    },
+    "documentation": {
+      "title": "Documentation",
+      "gettingStarted": "Getting Started",
+      "contributing": "Contributing",
+      "reportIssues": "Report Issues"
+    },
+    "legal": {
+      "title": "Legal",
+      "license": "License (GPL-2.0)",
+      "author": "Author"
+    },
+    "copyright": "© 2025 WP Kakitai. Built with ❤️ for Japanese learners and students."
+  }
+}

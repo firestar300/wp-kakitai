@@ -1,11 +1,18 @@
 import './style.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { initI18n } from './i18n/translations.js';
+import { initLanguageSelector } from './i18n/language-selector.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize i18n first
+  initI18n();
+  initLanguageSelector();
+
+  // Then initialize other components
   initAnimations();
   initMobileMenu();
   initSmoothScroll();

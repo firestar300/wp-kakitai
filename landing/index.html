@@ -35,15 +35,16 @@
           <span class="font-japanese text-gray-600">書きたい</span>
         </div>
         <div class="hidden md:flex items-center gap-6">
-          <a href="#features" class="text-gray-600 hover:text-primary-600 transition-colors">Features</a>
-          <a href="#demo" class="text-gray-600 hover:text-primary-600 transition-colors">Demo</a>
-          <a href="#steps" class="text-gray-600 hover:text-primary-600 transition-colors">How It Works</a>
+          <a href="#features" class="text-gray-600 hover:text-primary-600 transition-colors" data-i18n="nav.features">Features</a>
+          <a href="#demo" class="text-gray-600 hover:text-primary-600 transition-colors" data-i18n="nav.demo">Demo</a>
+          <a href="#steps" class="text-gray-600 hover:text-primary-600 transition-colors" data-i18n="nav.howItWorks">How It Works</a>
+          <div id="language-selector-container"></div>
           <a href="https://github.com/firestar300/wp-kakitai" target="_blank" class="text-gray-600 hover:text-primary-600 transition-colors">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
           </a>
-          <a href="https://github.com/firestar300/wp-kakitai/releases" class="btn-primary" target="_blank">
+          <a href="https://github.com/firestar300/wp-kakitai/releases" class="btn-primary" target="_blank" data-i18n="nav.download">
             Download
           </a>
         </div>
@@ -60,11 +61,11 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white pt-16">
     <div class="flex flex-col items-center gap-6 p-8">
-      <a href="#features" class="text-xl text-gray-600 hover:text-primary-600">Features</a>
-      <a href="#demo" class="text-xl text-gray-600 hover:text-primary-600">Demo</a>
-      <a href="#steps" class="text-xl text-gray-600 hover:text-primary-600">How It Works</a>
+      <a href="#features" class="text-xl text-gray-600 hover:text-primary-600" data-i18n="nav.features">Features</a>
+      <a href="#demo" class="text-xl text-gray-600 hover:text-primary-600" data-i18n="nav.demo">Demo</a>
+      <a href="#steps" class="text-xl text-gray-600 hover:text-primary-600" data-i18n="nav.howItWorks">How It Works</a>
       <a href="https://github.com/firestar300/wp-kakitai" target="_blank" class="text-xl text-gray-600 hover:text-primary-600">GitHub</a>
-      <a href="https://github.com/firestar300/wp-kakitai/releases" class="btn-primary" target="_blank">Download</a>
+      <a href="https://github.com/firestar300/wp-kakitai/releases" class="btn-primary" target="_blank" data-i18n="nav.download">Download</a>
     </div>
   </div>
 
@@ -77,16 +78,16 @@
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
             </svg>
-            WordPress Plugin
+            <span data-i18n="hero.badge">WordPress Plugin</span>
           </span>
         </div>
 
         <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight pb-2" id="hero-title">
-          Kanji to Furigana,
-          <span class="text-gradient block pb-1">Instantly</span>
+          <span data-i18n="hero.title.line1">Kanji to Furigana,</span>
+          <span class="text-gradient block pb-1" data-i18n="hero.title.line2">Instantly</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-600 mb-8" id="hero-description">
+        <p class="text-xl md:text-2xl text-gray-600 mb-8" id="hero-description" data-i18n="hero.description" data-i18n-html>
           Automatically add <span class="font-japanese font-medium text-primary-600">furigana</span> (振り仮名) reading guides to Japanese kanji. Perfect for learners, students, and young readers.
         </p>
 
@@ -95,13 +96,13 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
             </svg>
-            Download Plugin
+            <span data-i18n="hero.downloadButton">Download Plugin</span>
           </a>
           <a href="https://github.com/firestar300/wp-kakitai" class="btn-secondary" target="_blank">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
-            View on GitHub
+            <span data-i18n="hero.githubButton">View on GitHub</span>
           </a>
         </div>
 
@@ -111,19 +112,19 @@
               <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
               </svg>
-              <span>WordPress 6.7+</span>
+              <span data-i18n="hero.stats.wordpress">WordPress 6.7+</span>
             </div>
             <div class="flex items-center gap-2">
               <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
-              <span>Powered by Kuromoji.js</span>
+              <span data-i18n="hero.stats.poweredBy">Powered by Kuromoji.js</span>
             </div>
             <div class="flex items-center gap-2">
               <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
               </svg>
-              <span>GPL-2.0 License</span>
+              <span data-i18n="hero.stats.license">GPL-2.0 License</span>
             </div>
           </div>
         </div>
@@ -135,10 +136,10 @@
   <section id="demo" class="section-padding bg-white">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal" data-i18n="demo.title">
           See It In Action
         </h2>
-        <p class="text-xl text-gray-600 scroll-reveal">
+        <p class="text-xl text-gray-600 scroll-reveal" data-i18n="demo.subtitle">
           From kanji to furigana with one click
         </p>
       </div>
@@ -146,14 +147,14 @@
       <div class="max-w-3xl mx-auto">
         <div class="bg-gray-50 rounded-2xl p-8 md:p-12 card-shadow scroll-reveal">
           <div class="mb-8">
-            <div class="text-sm text-gray-500 mb-2">Without furigana:</div>
+            <div class="text-sm text-gray-500 mb-2" data-i18n="demo.without">Without furigana:</div>
             <div class="text-3xl md:text-4xl font-japanese mb-2" id="demo-before">
               今日は良い天気です
             </div>
           </div>
 
           <div class="border-t border-gray-200 pt-8">
-            <div class="text-sm text-gray-500 mb-2">With furigana:</div>
+            <div class="text-sm text-gray-500 mb-2" data-i18n="demo.with">With furigana:</div>
             <div class="ruby-example" id="demo-after">
               <ruby>今日<rt>きょう</rt></ruby>は<ruby>良<rt>よ</rt></ruby>い<ruby>天気<rt>てんき</rt></ruby>です
             </div>
@@ -163,7 +164,7 @@
             <svg class="w-5 h-5 text-primary-600 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
             </svg>
-            <span>One click • Automatic detection • Standard HTML</span>
+            <span data-i18n="demo.features">One click • Automatic detection • Standard HTML</span>
           </div>
         </div>
       </div>
@@ -174,10 +175,10 @@
   <section id="features" class="section-padding">
     <div class="container-custom">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal" data-i18n="features.title">
           Powerful Features
         </h2>
-        <p class="text-xl text-gray-600 scroll-reveal">
+        <p class="text-xl text-gray-600 scroll-reveal" data-i18n="features.subtitle">
           Everything learners need to read Japanese content
         </p>
       </div>
@@ -190,8 +191,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">One-Click Addition</h3>
-          <p class="text-gray-600">Select Japanese text and add furigana with a single click from the Gutenberg toolbar.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.oneClick.title">One-Click Addition</h3>
+          <p class="text-gray-600" data-i18n="features.items.oneClick.description">Select Japanese text and add furigana with a single click from the Gutenberg toolbar.</p>
         </div>
 
         <!-- Feature 2 -->
@@ -201,8 +202,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">Toggle On/Off</h3>
-          <p class="text-gray-600">Click again to remove furigana. Perfect for editing and updating content easily.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.toggle.title">Toggle On/Off</h3>
+          <p class="text-gray-600" data-i18n="features.items.toggle.description">Click again to remove furigana. Perfect for editing and updating content easily.</p>
         </div>
 
         <!-- Feature 3 -->
@@ -212,8 +213,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">Smart Detection</h3>
-          <p class="text-gray-600">Powered by Kuromoji.js for accurate morphological analysis of Japanese text.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.smart.title">Smart Detection</h3>
+          <p class="text-gray-600" data-i18n="features.items.smart.description">Powered by Kuromoji.js for accurate morphological analysis of Japanese text.</p>
         </div>
 
         <!-- Feature 4 -->
@@ -223,8 +224,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">Standard HTML</h3>
-          <p class="text-gray-600">Uses ruby, rt, and rp tags for maximum browser compatibility. No special CSS needed.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.standardHtml.title">Standard HTML</h3>
+          <p class="text-gray-600" data-i18n="features.items.standardHtml.description">Uses ruby, rt, and rp tags for maximum browser compatibility. No special CSS needed.</p>
         </div>
 
         <!-- Feature 5 -->
@@ -234,8 +235,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">Native Integration</h3>
-          <p class="text-gray-600">Seamlessly integrated into WordPress Gutenberg editor. Works with Paragraph and Heading blocks.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.native.title">Native Integration</h3>
+          <p class="text-gray-600" data-i18n="features.items.native.description">Seamlessly integrated into WordPress Gutenberg editor. Works with Paragraph and Heading blocks.</p>
         </div>
 
         <!-- Feature 6 -->
@@ -245,8 +246,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">Fast Performance</h3>
-          <p class="text-gray-600">Client-side processing with intelligent caching. No impact on your site's front-end speed.</p>
+          <h3 class="text-xl font-bold mb-2" data-i18n="features.items.performance.title">Fast Performance</h3>
+          <p class="text-gray-600" data-i18n="features.items.performance.description">Client-side processing with intelligent caching. No impact on your site's front-end speed.</p>
         </div>
       </div>
     </div>
@@ -256,10 +257,10 @@
   <section id="steps" class="section-padding bg-white">
     <div class="container-custom">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 scroll-reveal" data-i18n="steps.title">
           How It Works
         </h2>
-        <p class="text-xl text-gray-600 scroll-reveal">
+        <p class="text-xl text-gray-600 scroll-reveal" data-i18n="steps.subtitle">
           Three simple steps to add furigana to your content
         </p>
       </div>
@@ -286,8 +287,8 @@
             <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-primary-600">1</span>
             </div>
-            <h3 class="text-xl font-bold mb-2">Select Text</h3>
-            <p class="text-gray-600">Highlight the Japanese text you want to add furigana to in the Gutenberg editor</p>
+            <h3 class="text-xl font-bold mb-2" data-i18n="steps.step1.title">Select Text</h3>
+            <p class="text-gray-600" data-i18n="steps.step1.description">Highlight the Japanese text you want to add furigana to in the Gutenberg editor</p>
           </div>
 
           <!-- Step 2 -->
@@ -295,8 +296,8 @@
             <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-primary-600">2</span>
             </div>
-            <h3 class="text-xl font-bold mb-2">Click Button</h3>
-            <p class="text-gray-600">Click the furigana button in the toolbar - it's that simple</p>
+            <h3 class="text-xl font-bold mb-2" data-i18n="steps.step2.title">Click Button</h3>
+            <p class="text-gray-600" data-i18n="steps.step2.description">Click the furigana button in the toolbar - it's that simple</p>
           </div>
 
           <!-- Step 3 -->
@@ -304,8 +305,8 @@
             <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-primary-600">3</span>
             </div>
-            <h3 class="text-xl font-bold mb-2">Done!</h3>
-            <p class="text-gray-600">Furigana is automatically added to all kanji in your selection</p>
+            <h3 class="text-xl font-bold mb-2" data-i18n="steps.step3.title">Done!</h3>
+            <p class="text-gray-600" data-i18n="steps.step3.description">Furigana is automatically added to all kanji in your selection</p>
           </div>
         </div>
       </div>
@@ -316,10 +317,10 @@
   <section class="section-padding bg-gradient-to-br from-primary-600 to-primary-800 text-white">
     <div class="container-custom">
       <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-reveal" data-i18n="cta.title">
           Ready to Get Started?
         </h2>
-        <p class="text-xl mb-8 text-primary-100 scroll-reveal">
+        <p class="text-xl mb-8 text-primary-100 scroll-reveal" data-i18n="cta.subtitle">
           Download WP Kakitai and help learners read Japanese content with confidence.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal">
@@ -327,15 +328,15 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
             </svg>
-            Download Plugin
+            <span data-i18n="cta.downloadButton">Download Plugin</span>
           </a>
           <a href="https://github.com/firestar300/wp-kakitai" class="px-8 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors duration-200 inline-flex items-center gap-2" target="_blank">
-            View Documentation
+            <span data-i18n="cta.documentationButton">View Documentation</span>
           </a>
         </div>
 
         <div class="mt-12 pt-8 border-t border-primary-400 scroll-reveal">
-          <p class="text-sm text-primary-100">
+          <p class="text-sm text-primary-100" data-i18n="cta.footer">
             Free • Open Source • GPL-2.0 License
           </p>
         </div>
@@ -351,40 +352,40 @@
           <div class="text-white text-xl font-bold mb-4">
             WP Kakitai <span class="font-japanese">書きたい</span>
           </div>
-          <p class="text-sm">
+          <p class="text-sm" data-i18n="footer.tagline">
             Add furigana to kanji instantly. Perfect for Japanese learners and students.
           </p>
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4">Resources</h3>
+          <h3 class="text-white font-semibold mb-4" data-i18n="footer.resources.title">Resources</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="https://github.com/firestar300/wp-kakitai" class="hover:text-white transition-colors" target="_blank">GitHub Repository</a></li>
-            <li><a href="https://github.com/firestar300/wp-kakitai/releases" class="hover:text-white transition-colors" target="_blank">Download</a></li>
-            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/CHANGELOG.md" class="hover:text-white transition-colors" target="_blank">Changelog</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.resources.github">GitHub Repository</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai/releases" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.resources.download">Download</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/CHANGELOG.md" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.resources.changelog">Changelog</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4">Documentation</h3>
+          <h3 class="text-white font-semibold mb-4" data-i18n="footer.documentation.title">Documentation</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="https://github.com/firestar300/wp-kakitai#readme" class="hover:text-white transition-colors" target="_blank">Getting Started</a></li>
-            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/CONTRIBUTING.md" class="hover:text-white transition-colors" target="_blank">Contributing</a></li>
-            <li><a href="https://github.com/firestar300/wp-kakitai/issues" class="hover:text-white transition-colors" target="_blank">Report Issues</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai#readme" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.documentation.gettingStarted">Getting Started</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/CONTRIBUTING.md" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.documentation.contributing">Contributing</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai/issues" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.documentation.reportIssues">Report Issues</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4">Legal</h3>
+          <h3 class="text-white font-semibold mb-4" data-i18n="footer.legal.title">Legal</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/LICENSE" class="hover:text-white transition-colors" target="_blank">License (GPL-2.0)</a></li>
-            <li><a href="https://github.com/firestar300" class="hover:text-white transition-colors" target="_blank">Author</a></li>
+            <li><a href="https://github.com/firestar300/wp-kakitai/blob/main/LICENSE" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.legal.license">License (GPL-2.0)</a></li>
+            <li><a href="https://github.com/firestar300" class="hover:text-white transition-colors" target="_blank" data-i18n="footer.legal.author">Author</a></li>
           </ul>
         </div>
       </div>
 
       <div class="pt-8 border-t border-gray-800 text-center text-sm">
-        <p>
+        <p data-i18n="footer.copyright">
           © 2025 WP Kakitai. Built with ❤️ for Japanese learners and students.
         </p>
       </div>
