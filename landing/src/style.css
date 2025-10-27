@@ -35,10 +35,6 @@
     @apply font-japanese text-2xl md:text-3xl;
   }
 
-  .ruby-example ruby {
-    @apply inline-flex flex-col items-center;
-  }
-
   .ruby-example rt {
     @apply text-sm text-primary-600 font-normal;
   }
