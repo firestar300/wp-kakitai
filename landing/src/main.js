@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initNavbar();
-  initScreenshotSlider();
   logConsoleMessage();
 });
 
@@ -156,90 +155,6 @@ function initNavbar() {
       nav.style.background = 'rgba(255, 255, 255, 0.8)';
     }
   });
-}
-
-// Initialize screenshot slider
-function initScreenshotSlider() {
-  const slides = document.querySelector('.screenshot-slides');
-  const dots = document.querySelectorAll('.screenshot-dot');
-  const prevButton = document.querySelector('.screenshot-prev');
-  const nextButton = document.querySelector('.screenshot-next');
-
-  if (!slides || !dots.length) return;
-
-  let currentIndex = 0;
-  const totalSlides = dots.length;
-  let autoplayInterval;
-
-  // Go to specific slide
-  function goToSlide(index) {
-    currentIndex = index;
-    const offset = -index * 100;
-    slides.style.transform = `translateX(${offset}%)`;
-
-    // Update dots
-    dots.forEach((dot, i) => {
-      if (i === index) {
-        dot.classList.remove('bg-gray-300', 'hover:bg-gray-400');
-        dot.classList.add('bg-primary-600');
-      } else {
-        dot.classList.remove('bg-primary-600');
-        dot.classList.add('bg-gray-300', 'hover:bg-gray-400');
-      }
-    });
-  }
-
-  // Next slide
-  function nextSlide() {
-    const next = (currentIndex + 1) % totalSlides;
-    goToSlide(next);
-  }
-
-  // Previous slide
-  function prevSlide() {
-    const prev = (currentIndex - 1 + totalSlides) % totalSlides;
-    goToSlide(prev);
-  }
-
-  // Start autoplay
-  function startAutoplay() {
-    autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-  }
-
-  // Stop autoplay
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
-  }
-
-  // Event listeners
-  prevButton?.addEventListener('click', () => {
-    prevSlide();
-    stopAutoplay();
-    startAutoplay(); // Restart autoplay
-  });
-
-  nextButton?.addEventListener('click', () => {
-    nextSlide();
-    stopAutoplay();
-    startAutoplay(); // Restart autoplay
-  });
-
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const index = parseInt(dot.dataset.index);
-      goToSlide(index);
-      stopAutoplay();
-      startAutoplay(); // Restart autoplay
-    });
-  });
-
-  // Pause on hover
-  const sliderContainer = document.querySelector('.screenshot-slider');
-  sliderContainer?.addEventListener('mouseenter', stopAutoplay);
-  sliderContainer?.addEventListener('mouseleave', startAutoplay);
-
-  // Start autoplay
-  startAutoplay();
 }
 
 // Console message
