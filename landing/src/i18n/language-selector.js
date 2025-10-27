@@ -1,4 +1,21 @@
-import { languages, changeLanguage, getCurrentLanguage } from './translations.js';
+import { languages, getCurrentLanguage } from './translations.js';
+
+/**
+ * Get language page URL
+ */
+function getLanguageUrl(lang) {
+  const currentPath = window.location.pathname;
+  const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+
+  if (lang === 'en') {
+    return basePath + 'index.html';
+  } else if (lang === 'fr') {
+    return basePath + 'fr.html';
+  } else if (lang === 'ja') {
+    return basePath + 'ja.html';
+  }
+  return basePath;
+}
 
 /**
  * Create language selector dropdown
@@ -23,37 +40,24 @@ export function createLanguageSelector() {
       </svg>
     </button>
 
-    <div class="language-selector-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+    <nav class="language-selector-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50" aria-label="Language selection">
       ${Object.entries(languages).map(([code, lang]) => `
-        <button
-          class="language-option w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors ${code === currentLang ? 'bg-primary-50' : ''}"
-          data-lang="${code}"
+        <a
+          href="${getLanguageUrl(code)}"
+          class="language-option flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors ${code === currentLang ? 'bg-primary-50' : ''}"
+          hreflang="${code}"
+          lang="${code}"
+          ${code === currentLang ? 'aria-current="page"' : ''}
         >
           <span class="text-xl">${lang.flag}</span>
           <span class="text-sm font-medium text-gray-700">${lang.name}</span>
           ${code === currentLang ? '<svg class="w-4 h-4 text-primary-600 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
-        </button>
+        </a>
       `).join('')}
-    </div>
+    </nav>
   `;
 
   return selector;
-}
-
-/**
- * Handle language change event
- */
-function handleLanguageChange() {
-  const container = document.getElementById('language-selector-container');
-  if (!container) return;
-
-  // Clear container and recreate selector
-  container.innerHTML = '';
-  const newSelector = createLanguageSelector();
-  container.appendChild(newSelector);
-
-  // Reattach event listeners
-  attachSelectorEvents(newSelector);
 }
 
 /**
@@ -96,29 +100,11 @@ function attachSelectorEvents(selector) {
   };
   document.addEventListener('click', closeOnOutsideClick);
 
-  // Handle language selection
-  selector.querySelectorAll('.language-option').forEach(option => {
-    option.addEventListener('click', (e) => {
-      e.preventDefault();
-      const lang = option.dataset.lang;
+  // Links handle navigation natively, no need for manual click handlers
+  // Just close dropdown when a link is clicked (for smooth UX)
+  selector.querySelectorAll('.language-option').forEach(link => {
+    link.addEventListener('click', () => {
       closeDropdown();
-
-      // Get current page path
-      const currentPath = window.location.pathname;
-      const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-
-      // Determine target page
-      let targetPage;
-      if (lang === 'en') {
-        targetPage = basePath + 'index.html';
-      } else if (lang === 'fr') {
-        targetPage = basePath + 'fr.html';
-      } else if (lang === 'ja') {
-        targetPage = basePath + 'ja.html';
-      }
-
-      // Redirect to static page
-      window.location.href = targetPage;
     });
   });
 }
@@ -139,8 +125,4 @@ export function initLanguageSelector() {
 
   // Attach event listeners
   attachSelectorEvents(selector);
-
-  // Listen for language changes (only once)
-  window.removeEventListener('languageChanged', handleLanguageChange);
-  window.addEventListener('languageChanged', handleLanguageChange);
 }
