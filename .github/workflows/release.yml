@@ -16,6 +16,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Update version in files
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          echo "📝 Updating version to $VERSION in all files..."
+
+          # Update package.json
+          sed -i 's/"version": "[^"]*"/"version": "'$VERSION'"/' package.json
+          echo "✅ Updated package.json"
+
+          # Update wp-kakitai.php (Version header)
+          sed -i 's/\* Version:.*/* Version:           '$VERSION'/' wp-kakitai.php
+          echo "✅ Updated wp-kakitai.php (Version header)"
+
+          # Update wp-kakitai.php (WP_KAKITAI_VERSION constant)
+          sed -i "s/define( 'WP_KAKITAI_VERSION', '[^']*' );/define( 'WP_KAKITAI_VERSION', '$VERSION' );/" wp-kakitai.php
+          echo "✅ Updated wp-kakitai.php (constant)"
+
+          # Update readme.txt if exists
+          if [ -f "readme.txt" ]; then
+            sed -i 's/Stable tag:.*/Stable tag:        '$VERSION'/' readme.txt
+            echo "✅ Updated readme.txt"
+          fi
+
+          echo "✨ All versions updated to $VERSION"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -45,10 +74,6 @@ jobs:
           # Verify contents
           echo "📦 Archive contents:"
           unzip -l wp-kakitai.zip
-
-      - name: Extract version from tag
-        id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
