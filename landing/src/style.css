@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mochiy+Pop+P+One&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -32,11 +32,15 @@
   }
 
   .ruby-example {
-    @apply font-japanese text-2xl md:text-3xl;
+    @apply font-japanese text-2xl md:text-3xl text-gray-600;
   }
 
   .ruby-example rt {
     @apply text-sm text-primary-600 font-normal;
+  }
+
+  .font-japanese {
+    @apply text-gray-600;
   }
 }
 

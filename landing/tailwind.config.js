@@ -70,7 +70,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        japanese: ['Noto Sans JP', 'sans-serif'],
+        japanese: ['Mochiy Pop P One', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
