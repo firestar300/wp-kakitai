@@ -28,31 +28,31 @@ export function createLanguageSelector() {
   selector.className = 'language-selector relative';
   selector.innerHTML = `
     <button
-      class="language-selector-button flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+      class="language-selector-button flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="Select language"
       aria-expanded="false"
       aria-haspopup="true"
       type="button"
     >
       <span class="text-xl">${currentLanguage.flag}</span>
-      <span class="hidden md:inline text-sm font-medium text-gray-700">${currentLanguage.name}</span>
-      <svg class="w-4 h-4 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <span class="hidden md:inline text-sm font-medium text-gray-700 dark:text-gray-300">${currentLanguage.name}</span>
+      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </button>
 
-    <nav class="language-selector-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50" aria-label="Language selection">
+    <nav class="language-selector-dropdown hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50" aria-label="Language selection">
       ${Object.entries(languages).map(([code, lang]) => `
         <a
           href="${getLanguageUrl(code)}"
-          class="language-option flex items-center gap-3 px-4 py-2 hover:bg-gray-50 transition-colors ${code === currentLang ? 'bg-primary-50' : ''}"
+          class="language-option flex items-center gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${code === currentLang ? 'bg-primary-50 dark:bg-primary-900/30' : ''}"
           hreflang="${code}"
           lang="${code}"
           ${code === currentLang ? 'aria-current="page"' : ''}
         >
           <span class="text-xl">${lang.flag}</span>
-          <span class="text-sm font-medium text-gray-700">${lang.name}</span>
-          ${code === currentLang ? '<svg class="w-4 h-4 text-primary-600 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">${lang.name}</span>
+          ${code === currentLang ? '<svg class="w-4 h-4 text-primary-600 dark:text-primary-400 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
         </a>
       `).join('')}
     </nav>

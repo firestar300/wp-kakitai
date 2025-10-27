@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initI18n } from './i18n/translations.js';
 import { initLanguageSelector } from './i18n/language-selector.js';
+import { initDarkMode, updateNavbarBackground } from './dark-mode.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n first
   initI18n();
   initLanguageSelector();
+  initDarkMode();
 
   // Then initialize other components
   initAnimations();
@@ -235,13 +237,7 @@ function initNavbar() {
   if (!nav) return;
 
   window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-      nav.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-      nav.style.background = 'rgba(255, 255, 255, 0.8)';
-    }
+    updateNavbarBackground();
   });
 }
 

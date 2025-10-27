@@ -32,15 +32,15 @@
   }
 
   .ruby-example {
-    @apply font-japanese text-2xl md:text-3xl text-gray-600;
+    @apply font-japanese text-2xl md:text-3xl text-gray-600 dark:text-gray-300;
   }
 
   .ruby-example rt {
-    @apply text-sm text-primary-600 font-normal;
+    @apply text-sm text-primary-600 dark:text-primary-400 font-normal;
   }
 
   .font-japanese {
-    @apply text-gray-600;
+    @apply text-gray-600 dark:text-gray-300;
   }
 }
 
@@ -67,8 +67,16 @@
     border: 2px solid #FCE4EC;
   }
 
+  .dark .feature-card-border {
+    border-color: #374151; /* gray-700 */
+  }
+
   .feature-card-border-hover {
     border-color: #E91E63;
+  }
+
+  .dark .feature-card-border-hover {
+    border-color: #EC4899; /* pink-500 */
   }
 }
 
