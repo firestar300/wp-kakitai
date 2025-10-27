@@ -69,8 +69,7 @@ function createDarkModeToggle() {
   const isDark = document.documentElement.classList.contains('dark');
 
   const button = document.createElement('button');
-  button.id = 'dark-mode-toggle';
-  button.className = 'p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors';
+  button.className = 'dark-mode-toggle p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors';
   button.setAttribute('aria-label', 'Toggle dark mode');
 
   button.innerHTML = isDark
@@ -83,7 +82,10 @@ function createDarkModeToggle() {
 
   button.addEventListener('click', () => {
     const newTheme = toggleTheme();
-    updateToggleIcon(button, newTheme === 'dark');
+    // Update all toggle buttons (desktop and mobile)
+    document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
+      updateToggleIcon(btn, newTheme === 'dark');
+    });
   });
 
   return button;
@@ -111,21 +113,28 @@ export { updateNavbarBackground };
  * Initialize dark mode
  */
 export function initDarkMode() {
-  // Insert toggle button in navbar
+  // Insert toggle button in desktop navbar
   const container = document.getElementById('dark-mode-toggle-container');
   if (container) {
     const toggle = createDarkModeToggle();
     container.appendChild(toggle);
   }
 
+  // Insert toggle button in mobile navbar (next to hamburger menu)
+  const mobileContainer = document.getElementById('mobile-dark-mode-toggle-container');
+  if (mobileContainer) {
+    const mobileToggle = createDarkModeToggle();
+    mobileContainer.appendChild(mobileToggle);
+  }
+
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem(STORAGE_KEY)) {
       applyTheme(e.matches ? 'dark' : 'light');
-      const button = document.getElementById('dark-mode-toggle');
-      if (button) {
-        updateToggleIcon(button, e.matches);
-      }
+      // Update all toggle buttons (desktop and mobile)
+      document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
+        updateToggleIcon(btn, e.matches);
+      });
     }
   });
 }

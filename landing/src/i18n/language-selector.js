@@ -115,13 +115,22 @@ function attachSelectorEvents(selector) {
         // Change language dynamically in dev mode
         changeLanguage(lang);
 
-        // Update the selector UI
+        // Update desktop selector UI
         const container = document.getElementById('language-selector-container');
         if (container) {
           container.innerHTML = '';
           const newSelector = createLanguageSelector();
           container.appendChild(newSelector);
           attachSelectorEvents(newSelector);
+        }
+
+        // Update mobile selector UI
+        const mobileContainer = document.getElementById('mobile-language-selector-container');
+        if (mobileContainer) {
+          mobileContainer.innerHTML = '';
+          const newMobileSelector = createLanguageSelector();
+          mobileContainer.appendChild(newMobileSelector);
+          attachSelectorEvents(newMobileSelector);
         }
       }
       // In production, native <a> navigation works (no preventDefault)
@@ -133,16 +142,23 @@ function attachSelectorEvents(selector) {
  * Initialize language selector functionality
  */
 export function initLanguageSelector() {
+  // Desktop language selector
   const container = document.getElementById('language-selector-container');
-  if (!container) {
-    console.warn('Language selector container not found');
-    return;
+  if (container) {
+    const selector = createLanguageSelector();
+    container.appendChild(selector);
+    attachSelectorEvents(selector);
   }
 
-  // Create and insert selector
-  const selector = createLanguageSelector();
-  container.appendChild(selector);
+  // Mobile language selector
+  const mobileContainer = document.getElementById('mobile-language-selector-container');
+  if (mobileContainer) {
+    const mobileSelector = createLanguageSelector();
+    mobileContainer.appendChild(mobileSelector);
+    attachSelectorEvents(mobileSelector);
+  }
 
-  // Attach event listeners
-  attachSelectorEvents(selector);
+  if (!container && !mobileContainer) {
+    console.warn('Language selector containers not found');
+  }
 }
