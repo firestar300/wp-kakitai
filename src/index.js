@@ -1,9 +1,8 @@
-import { registerFormatType, create, remove } from '@wordpress/rich-text';
+import { registerFormatType, create } from '@wordpress/rich-text';
 import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { Icon, language } from '@wordpress/icons';
-import React from 'react';
+import { furigana } from './icons';
 import { useKanjiFurigana } from './hooks';
 
 registerFormatType( 'wp-kakitai/furigana', {
@@ -41,7 +40,7 @@ registerFormatType( 'wp-kakitai/furigana', {
 
 		return (
 			<RichTextToolbarButton
-				icon={ <Icon icon={ language } /> }
+				icon={ furigana }
 				title={ __( 'Furigana', 'wp-kakitai' ) }
 				onClick={ async () => {
 					// If the text already contains furigana, remove them
