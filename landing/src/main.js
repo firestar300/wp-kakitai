@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Then initialize other components
   initAnimations();
   initMobileMenu();
+  initVideoLazyLoad();
   initSmoothScroll();
   initNavbar();
   logConsoleMessage();
@@ -40,6 +41,51 @@ function initMobileMenu() {
       });
     });
   }
+}
+
+// Initialize video lazy loading and viewport-based autoplay
+function initVideoLazyLoad() {
+  const video = document.getElementById('demo-video');
+
+  if (!video) return;
+
+  let isVideoLoaded = false;
+
+  // Create Intersection Observer to detect when video enters/exits viewport
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // Load video source when it's about to enter viewport (if not already loaded)
+        if (entry.isIntersecting && !isVideoLoaded) {
+          const source = video.querySelector('source[data-src]');
+          if (source) {
+            source.src = source.dataset.src;
+            source.removeAttribute('data-src');
+            video.load();
+            isVideoLoaded = true;
+          }
+        }
+
+        // Play video when in viewport, pause when out
+        if (entry.isIntersecting) {
+          video.play().catch(err => {
+            // Handle autoplay restrictions
+            console.log('Video autoplay failed:', err);
+          });
+        } else {
+          video.pause();
+        }
+      });
+    },
+    {
+      // Start loading/playing when 20% of the video is visible
+      threshold: 0.2,
+      // Start observing slightly before the video enters the viewport
+      rootMargin: '50px'
+    }
+  );
+
+  videoObserver.observe(video);
 }
 
 // Initialize all animations

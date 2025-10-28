@@ -23,6 +23,14 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
 
+  <!-- Preconnect to Google Fonts for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Load fonts asynchronously -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mochiy+Pop+P+One&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mochiy+Pop+P+One&display=swap"></noscript>
+
   <!-- Dark mode script - Must run before page renders to avoid flash -->
   <script>
     (function() {
@@ -288,13 +296,15 @@
         <!-- Video Demo -->
         <div class="relative rounded-2xl overflow-hidden scroll-reveal mb-12">
           <video
+            id="demo-video"
             class="w-full h-auto"
-            autoplay
             muted
             loop
             playsinline
+            preload="none"
+            poster="/wp-kakitai-demo-poster.webp"
           >
-            <source src="/wp-kakitai-demo.mp4" type="video/mp4">
+            <source data-src="/wp-kakitai-demo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
