@@ -11,7 +11,7 @@
       "line1": "Kanji to Furigana,",
       "line2": "Instantly"
     },
-    "description": "Automatically add <span class=\"font-japanese font-medium text-primary-600\">furigana</span> (振り仮名) reading guides to Japanese kanji. Perfect for learners, students, and young readers.",
+    "description": "Automatically add <span class=\"font-japanese font-medium text-primary-600\">furigana</span> <span lang=\"ja\">(振り仮名)</span> reading guides to Japanese kanji. Perfect for learners, students, and young readers.",
     "downloadButton": "Download Plugin",
     "githubButton": "View on GitHub",
     "stats": {

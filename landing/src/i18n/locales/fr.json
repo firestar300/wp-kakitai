@@ -11,7 +11,7 @@
       "line1": "Kanji vers Furigana,",
       "line2": "Instantanément"
     },
-    "description": "Ajoutez automatiquement des guides de lecture <span class=\"font-japanese font-medium text-primary-600\">furigana</span> (振り仮名) aux kanji japonais. Parfait pour les apprenants, les étudiants et les jeunes lecteurs.",
+    "description": "Ajoutez automatiquement des guides de lecture <span class=\"font-japanese font-medium text-primary-600\">furigana</span> <span lang=\"ja\">(振り仮名)</span> aux kanji japonais. Parfait pour les apprenants, les étudiants et les jeunes lecteurs.",
     "downloadButton": "Télécharger le plugin",
     "githubButton": "Voir sur GitHub",
     "stats": {
