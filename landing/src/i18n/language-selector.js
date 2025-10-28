@@ -36,7 +36,7 @@ export function createLanguageSelector() {
     >
       <span class="text-xl">${currentLanguage.flag}</span>
       <span class="hidden md:inline text-sm font-medium text-gray-700 dark:text-gray-300">${currentLanguage.name}</span>
-      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg aria-hidden="true" focusable="false" class="w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </button>
@@ -52,7 +52,7 @@ export function createLanguageSelector() {
         >
           <span class="text-xl">${lang.flag}</span>
           <span class="text-sm font-medium text-gray-700 dark:text-gray-300">${lang.name}</span>
-          ${code === currentLang ? '<svg class="w-4 h-4 text-primary-600 dark:text-primary-400 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
+          ${code === currentLang ? '<svg aria-hidden="true" focusable="false" class="w-4 h-4 text-primary-600 dark:text-primary-400 ml-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : ''}
         </a>
       `).join('')}
     </nav>
