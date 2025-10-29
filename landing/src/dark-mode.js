@@ -72,6 +72,7 @@ function createDarkModeToggle() {
 
   const button = document.createElement('button');
   button.className = 'dark-mode-toggle p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors';
+  button.setAttribute('aria-label', isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode'));
 
   const span = document.createElement('span');
   span.className = 'sr-only';
@@ -91,8 +92,9 @@ function createDarkModeToggle() {
     // Update all toggle buttons (desktop and mobile)
     document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
       updateToggleIcon(btn, newTheme === 'dark');
-      // Update screen reader text
+      // Update aria-label and screen reader text
       const isDark = newTheme === 'dark';
+      btn.setAttribute('aria-label', isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode'));
       const srSpan = btn.querySelector('.sr-only');
       if (srSpan) {
         srSpan.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
@@ -146,7 +148,8 @@ export function initDarkMode() {
       // Update all toggle buttons (desktop and mobile)
       document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
         updateToggleIcon(btn, e.matches);
-        // Update screen reader text
+        // Update aria-label and screen reader text
+        btn.setAttribute('aria-label', e.matches ? t('nav.switchToLightMode') : t('nav.switchToDarkMode'));
         const srSpan = btn.querySelector('.sr-only');
         if (srSpan) {
           srSpan.textContent = e.matches ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
@@ -159,6 +162,7 @@ export function initDarkMode() {
   window.addEventListener('languageChanged', () => {
     const isDark = document.documentElement.classList.contains('dark');
     document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
+      btn.setAttribute('aria-label', isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode'));
       const srSpan = btn.querySelector('.sr-only');
       if (srSpan) {
         srSpan.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
