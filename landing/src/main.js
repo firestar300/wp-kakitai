@@ -1,7 +1,7 @@
 import './style.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initI18n } from './i18n/translations.js';
+import { initI18n, t } from './i18n/translations.js';
 import { initLanguageSelector } from './i18n/language-selector.js';
 import { initDarkMode, updateNavbarBackground } from './dark-mode.js';
 
@@ -29,8 +29,19 @@ function initMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
 
   if (mobileMenuButton && mobileMenu) {
+    const srSpan = mobileMenuButton.querySelector('.sr-only');
+
+    // Update sr-only text based on menu state
+    const updateMenuButtonLabel = () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (srSpan) {
+        srSpan.textContent = isOpen ? t('nav.closeMobileMenu') : t('nav.openMobileMenu');
+      }
+    };
+
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      updateMenuButtonLabel();
     });
 
     // Close mobile menu when clicking on a link
@@ -38,8 +49,17 @@ function initMobileMenu() {
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+        updateMenuButtonLabel();
       });
     });
+
+    // Listen for language changes to update button label
+    window.addEventListener('languageChanged', () => {
+      updateMenuButtonLabel();
+    });
+
+    // Initialize label
+    updateMenuButtonLabel();
   }
 }
 

@@ -4,7 +4,11 @@
     "demo": "Démo",
     "howItWorks": "Comment ça marche",
     "github": "Voir le code source sur GitHub",
-    "download": "Télécharger"
+    "download": "Télécharger",
+    "openMobileMenu": "Ouvrir le menu mobile",
+    "closeMobileMenu": "Fermer le menu mobile",
+    "switchToLightMode": "Passer en mode clair",
+    "switchToDarkMode": "Passer en mode sombre"
   },
   "hero": {
     "badge": "Extension WordPress",

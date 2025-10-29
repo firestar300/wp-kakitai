@@ -4,7 +4,11 @@
     "demo": "Demo",
     "howItWorks": "How It Works",
     "github": "See source code on GitHub",
-    "download": "Download"
+    "download": "Download",
+    "openMobileMenu": "Open mobile menu",
+    "closeMobileMenu": "Close mobile menu",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode"
   },
   "hero": {
     "badge": "WordPress Plugin",

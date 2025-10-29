@@ -2,6 +2,8 @@
  * Dark Mode Management
  */
 
+import { t } from './i18n/translations.js';
+
 const STORAGE_KEY = 'wp-kakitai-theme';
 
 /**
@@ -70,7 +72,11 @@ function createDarkModeToggle() {
 
   const button = document.createElement('button');
   button.className = 'dark-mode-toggle p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors';
-  button.setAttribute('aria-label', 'Toggle dark mode');
+
+  const span = document.createElement('span');
+  span.className = 'sr-only';
+  span.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
+  button.appendChild(span);
 
   button.innerHTML = isDark
     ? `<svg aria-hidden="true" focusable="false" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,6 +91,12 @@ function createDarkModeToggle() {
     // Update all toggle buttons (desktop and mobile)
     document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
       updateToggleIcon(btn, newTheme === 'dark');
+      // Update screen reader text
+      const isDark = newTheme === 'dark';
+      const srSpan = btn.querySelector('.sr-only');
+      if (srSpan) {
+        srSpan.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
+      }
     });
   });
 
@@ -134,7 +146,23 @@ export function initDarkMode() {
       // Update all toggle buttons (desktop and mobile)
       document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
         updateToggleIcon(btn, e.matches);
+        // Update screen reader text
+        const srSpan = btn.querySelector('.sr-only');
+        if (srSpan) {
+          srSpan.textContent = e.matches ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
+        }
       });
     }
+  });
+
+  // Listen for language changes to update button labels
+  window.addEventListener('languageChanged', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll('.dark-mode-toggle').forEach(btn => {
+      const srSpan = btn.querySelector('.sr-only');
+      if (srSpan) {
+        srSpan.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
+      }
+    });
   });
 }
