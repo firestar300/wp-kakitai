@@ -7,24 +7,6 @@ import { t } from './i18n/translations.js';
 const STORAGE_KEY = 'wp-kakitai-theme';
 
 /**
- * Get user's theme preference
- */
-function getThemePreference() {
-  // Check localStorage
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored) {
-    return stored;
-  }
-
-  // Check system preference
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-
-  return 'light';
-}
-
-/**
  * Apply theme to document
  */
 function applyTheme(theme) {
@@ -77,7 +59,6 @@ function createDarkModeToggle() {
   const span = document.createElement('span');
   span.className = 'sr-only';
   span.textContent = isDark ? t('nav.switchToLightMode') : t('nav.switchToDarkMode');
-  button.appendChild(span);
 
   button.innerHTML = isDark
     ? `<svg aria-hidden="true" focusable="false" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,6 +67,8 @@ function createDarkModeToggle() {
     : `<svg aria-hidden="true" focusable="false" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
       </svg>`;
+
+  button.appendChild(span);
 
   button.addEventListener('click', () => {
     const newTheme = toggleTheme();
