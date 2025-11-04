@@ -26,14 +26,10 @@ function updateNavbarBackground() {
   const nav = document.querySelector('nav');
   if (!nav) return;
 
-  const currentScroll = window.pageYOffset;
   const isDark = document.documentElement.classList.contains('dark');
 
-  if (currentScroll > 100) {
-    nav.style.background = isDark ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, 0.5)';
-  } else {
-    nav.style.background = isDark ? 'rgba(0, 0, 0, .8)' : 'rgba(255, 255, 255, 0.8)';
-  }
+  nav.classList.toggle('dark:bg-black/75', isDark);
+  nav.classList.toggle('bg-white/75', !isDark);
 }
 
 /**
@@ -100,11 +96,6 @@ function updateToggleIcon(button, isDark) {
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
       </svg>`;
 }
-
-/**
- * Export updateNavbarBackground for use in scroll handler
- */
-export { updateNavbarBackground };
 
 /**
  * Initialize dark mode

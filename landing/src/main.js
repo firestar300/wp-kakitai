@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initI18n, t } from './i18n/translations.js';
 import { initLanguageSelector } from './i18n/language-selector.js';
-import { initDarkMode, updateNavbarBackground } from './dark-mode.js';
+import { initDarkMode } from './dark-mode.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initVideoLazyLoad();
   initSmoothScroll();
-  initNavbar();
   logConsoleMessage();
 });
 
@@ -294,16 +293,6 @@ function initSmoothScroll() {
         });
       }
     });
-  });
-}
-
-// Initialize navbar background on scroll
-function initNavbar() {
-  const nav = document.querySelector('nav');
-  if (!nav) return;
-
-  window.addEventListener('scroll', () => {
-    updateNavbarBackground();
   });
 }
 
