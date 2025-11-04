@@ -30,9 +30,9 @@ function updateNavbarBackground() {
   const isDark = document.documentElement.classList.contains('dark');
 
   if (currentScroll > 100) {
-    nav.style.background = isDark ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, 0.95)';
+    nav.style.background = isDark ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, 0.5)';
   } else {
-    nav.style.background = isDark ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, 0.8)';
+    nav.style.background = isDark ? 'rgba(0, 0, 0, .8)' : 'rgba(255, 255, 255, 0.8)';
   }
 }
 
