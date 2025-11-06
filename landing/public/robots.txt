@@ -1,0 +1,8 @@
+# WP Kakitai Landing Page - Robots.txt
+
+# Allow all bots to crawl
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://firestar300.github.io/wp-kakitai/landing/sitemap.xml

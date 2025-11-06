@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- English (Default) -->
+  <url>
+    <loc>https://firestar300.github.io/wp-kakitai/landing</loc>
+    <lastmod>2024-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://firestar300.github.io/wp-kakitai/landing"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://firestar300.github.io/wp-kakitai/landing/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://firestar300.github.io/wp-kakitai/landing/ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://firestar300.github.io/wp-kakitai/landing"/>
+  </url>
+
+  <!-- French -->
+  <url>
+    <loc>https://firestar300.github.io/wp-kakitai/landing/fr.html</loc>
+    <lastmod>2024-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://firestar300.github.io/wp-kakitai/landing"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://firestar300.github.io/wp-kakitai/landing/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://firestar300.github.io/wp-kakitai/landing/ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://firestar300.github.io/wp-kakitai/landing"/>
+  </url>
+
+  <!-- Japanese -->
+  <url>
+    <loc>https://firestar300.github.io/wp-kakitai/landing/ja.html</loc>
+    <lastmod>2024-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://firestar300.github.io/wp-kakitai/landing"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://firestar300.github.io/wp-kakitai/landing/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://firestar300.github.io/wp-kakitai/landing/ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://firestar300.github.io/wp-kakitai/landing"/>
+  </url>
+
+</urlset>
