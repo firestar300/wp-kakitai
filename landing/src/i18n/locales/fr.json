@@ -3,8 +3,53 @@
     "features": "Fonctionnalités",
     "demo": "Démo",
     "howItWorks": "Comment ça marche",
-    "github": "Voir le code source sur GitHub",
-    "download": "Télécharger",
+    "github": {
+      "text": "Voir le code source sur GitHub",
+      "attr": {
+        "title": "Voir le code source sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "download": {
+      "text": "Télécharger",
+      "attr": {
+        "title": "Accéder aux versions dans le dépôt GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "documentation": {
+      "attr": {
+        "title": "Voir la documentation sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "changelog": {
+      "attr": {
+        "title": "Accéder à l'historique des versions dans le dépôt GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "gettingStarted": {
+      "attr": {
+        "title": "Accéder à la documentation de démarrage sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "contributing": {
+      "attr": {
+        "title": "Accéder à la documentation de contribution sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "reportIssues": {
+      "attr": {
+        "title": "Accéder aux rapports de problèmes sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "license": {
+      "attr": {
+        "title": "Accéder à la licence dans le dépôt GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
+    "author": {
+      "attr": {
+        "title": "Accéder à l'auteur sur GitHub — Ouvrir dans un nouvel onglet"
+      }
+    },
     "openMobileMenu": "Ouvrir le menu mobile",
     "closeMobileMenu": "Fermer le menu mobile",
     "switchToLightMode": "Passer en mode clair",

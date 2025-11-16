@@ -3,8 +3,53 @@
     "features": "Features",
     "demo": "Demo",
     "howItWorks": "How It Works",
-    "github": "See source code on GitHub",
-    "download": "Download",
+    "github": {
+      "text": "See source code on GitHub",
+      "attr": {
+        "title": "See source code on GitHub — Open in a new tab"
+      }
+    },
+    "download": {
+      "text": "Download",
+      "attr": {
+        "title": "Access to releases in GitHub repository — Open in a new tab"
+      }
+    },
+    "documentation": {
+      "attr": {
+        "title": "View documentation on GitHub — Open in a new tab"
+      }
+    },
+    "changelog": {
+      "attr": {
+        "title": "Access to changelog in GitHub repository — Open in a new tab"
+      }
+    },
+    "gettingStarted": {
+      "attr": {
+        "title": "Access to getting started documentation on GitHub — Open in a new tab"
+      }
+    },
+    "contributing": {
+      "attr": {
+        "title": "Access to contributing documentation on GitHub — Open in a new tab"
+      }
+    },
+    "reportIssues": {
+      "attr": {
+        "title": "Access to report issues on GitHub — Open in a new tab"
+      }
+    },
+    "license": {
+      "attr": {
+        "title": "Access to license in GitHub repository — Open in a new tab"
+      }
+    },
+    "author": {
+      "attr": {
+        "title": "Access to author on GitHub — Open in a new tab"
+      }
+    },
     "openMobileMenu": "Open mobile menu",
     "closeMobileMenu": "Close mobile menu",
     "switchToLightMode": "Switch to light mode",

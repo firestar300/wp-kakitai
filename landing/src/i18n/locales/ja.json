@@ -3,8 +3,53 @@
     "features": "機能",
     "demo": "デモ",
     "howItWorks": "使い方",
-    "github": "GitHubでソースコードを見る",
-    "download": "ダウンロード",
+    "github": {
+      "text": "GitHubでソースコードを見る",
+      "attr": {
+        "title": "GitHubでソースコードを見る — 新しいタブで開く"
+      }
+    },
+    "download": {
+      "text": "ダウンロード",
+      "attr": {
+        "title": "GitHubリポジトリのリリースにアクセス — 新しいタブで開く"
+      }
+    },
+    "documentation": {
+      "attr": {
+        "title": "GitHubでドキュメントを見る — 新しいタブで開く"
+      }
+    },
+    "changelog": {
+      "attr": {
+        "title": "GitHubリポジトリの変更履歴にアクセス — 新しいタブで開く"
+      }
+    },
+    "gettingStarted": {
+      "attr": {
+        "title": "GitHubで入門ドキュメントにアクセス — 新しいタブで開く"
+      }
+    },
+    "contributing": {
+      "attr": {
+        "title": "GitHubで貢献ドキュメントにアクセス — 新しいタブで開く"
+      }
+    },
+    "reportIssues": {
+      "attr": {
+        "title": "GitHubで問題報告にアクセス — 新しいタブで開く"
+      }
+    },
+    "license": {
+      "attr": {
+        "title": "GitHubリポジトリのライセンスにアクセス — 新しいタブで開く"
+      }
+    },
+    "author": {
+      "attr": {
+        "title": "GitHubで作者にアクセス — 新しいタブで開く"
+      }
+    },
     "openMobileMenu": "モバイルメニューを開く",
     "closeMobileMenu": "モバイルメニューを閉じる",
     "switchToLightMode": "ライトモードに切り替え",
