@@ -1,51 +1,44 @@
-# Exclude development files from plugin ZIP
-# Used by: npm run plugin-zip
-
-# Version control
+# Directories
 .git
-.gitignore
 .github
-
-# Development
 node_modules
-src
-landing
 vendor
+landing
+dist
+tests
+scripts
 
-# Build configs
-webpack.config.js
-package.json
-package-lock.json
+# Build files (except build/index.js and build/index.asset.php)
+build/dict
+
+# Development files
+.editorconfig
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.distignore
+.phpcs.xml.dist
 composer.json
 composer.lock
-phpcs.xml.dist
 grumphp.yml
+package.json
+package-lock.json
+phpcs.xml.dist
+webpack.config.js
 wp-cli.yml
+wp-env.json
 
-# Documentation (keep only readme.txt)
+# Documentation (keep README for WordPress.org, exclude GitHub docs)
+CHANGELOG.md
 CONTRIBUTING.md
-RELEASE.md
-WORDPRESS_ORG.md
+LICENSE
 QUICK_START.md
+RELEASE.md
+*.md
 
-# Testing
-tests
-
-# OS files
+# Misc
 .DS_Store
 Thumbs.db
-
-# Editor files
-.vscode
-.idea
-*.swp
-*.swo
-*~
-
-# Logs
 *.log
-
-# Other
-.editorconfig
-.eslintrc.js
-.prettierrc
+*.zip

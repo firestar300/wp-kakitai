@@ -1,66 +1,16 @@
-name: Create Release
+name: Release Plugin
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
-
-permissions:
-  contents: write
+  release:
+    types: [published]
 
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Extract version from tag
-        id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-
-      - name: Verify version consistency
-        run: |
-          TAG_VERSION=${{ steps.get_version.outputs.VERSION }}
-          echo "🔍 Verifying version consistency..."
-          echo "Tag version: $TAG_VERSION"
-
-          # Check package.json
-          PACKAGE_VERSION=$(grep -oP '"version": "\K[^"]+' package.json)
-          echo "package.json version: $PACKAGE_VERSION"
-          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
-            echo "❌ ERROR: Version in package.json ($PACKAGE_VERSION) does not match tag ($TAG_VERSION)"
-            exit 1
-          fi
-
-          # Check wp-kakitai.php header
-          PHP_HEADER_VERSION=$(grep -oP '\* Version:\s+\K[\d.\-a-z]+' wp-kakitai.php)
-          echo "wp-kakitai.php header version: $PHP_HEADER_VERSION"
-          if [ "$PHP_HEADER_VERSION" != "$TAG_VERSION" ]; then
-            echo "❌ ERROR: Version in wp-kakitai.php header ($PHP_HEADER_VERSION) does not match tag ($TAG_VERSION)"
-            exit 1
-          fi
-
-          # Check wp-kakitai.php constant
-          PHP_CONSTANT_VERSION=$(grep -oP "define\( 'WP_KAKITAI_VERSION', '\K[^']+(?=' \))" wp-kakitai.php)
-          echo "wp-kakitai.php constant version: $PHP_CONSTANT_VERSION"
-          if [ "$PHP_CONSTANT_VERSION" != "$TAG_VERSION" ]; then
-            echo "❌ ERROR: Version in WP_KAKITAI_VERSION constant ($PHP_CONSTANT_VERSION) does not match tag ($TAG_VERSION)"
-            exit 1
-          fi
-
-          # Check readme.txt if exists
-          if [ -f "readme.txt" ]; then
-            README_VERSION=$(grep -oP 'Stable tag:\s+\K[\d.\-a-z]+' readme.txt)
-            echo "readme.txt version: $README_VERSION"
-            if [ "$README_VERSION" != "$TAG_VERSION" ]; then
-              echo "❌ ERROR: Version in readme.txt ($README_VERSION) does not match tag ($TAG_VERSION)"
-              exit 1
-            fi
-          fi
-
-          echo "✅ All versions match tag version $TAG_VERSION"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -74,51 +24,47 @@ jobs:
       - name: Build plugin
         run: npm run build
 
-      - name: Create plugin ZIP
+      - name: Create plugin ZIP (without dictionaries)
         run: |
-          # Create temporary folder for the plugin
-          mkdir -p wp-kakitai
+          # Install @wordpress/env which provides wp-scripts
+          npm install -g @wordpress/env
 
-          # Copy necessary files
-          cp -r build wp-kakitai/
-          cp wp-kakitai.php wp-kakitai/
-          cp readme.txt wp-kakitai/
-          cp LICENSE wp-kakitai/
+          # Create ZIP using WordPress scripts with .distignore
+          npx wp-scripts plugin-zip
 
-          # Create the archive
-          zip -r wp-kakitai.zip wp-kakitai
+          # The ZIP will be in the root directory
+          mv wp-kakitai.zip wp-kakitai-wordpress-org.zip
 
-          # Verify contents
-          echo "📦 Archive contents:"
-          unzip -l wp-kakitai.zip
+      - name: Create dictionary archive
+        run: |
+          cd build
+          tar -czf ../wp-kakitai-dictionaries.tar.gz dict/
+          cd ..
 
-      - name: Create Release
+      - name: Upload plugin ZIP to release
         uses: softprops/action-gh-release@v1
         with:
-          files: wp-kakitai.zip
-          generate_release_notes: true
-          name: Version ${{ steps.get_version.outputs.VERSION }}
-          body: |
-            ## 🎉 Version ${{ steps.get_version.outputs.VERSION }}
+          files: |
+            wp-kakitai-wordpress-org.zip
+            wp-kakitai-dictionaries.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            ### Installation
-
-            1. Download the `wp-kakitai.zip` file
-            2. In WordPress, go to Plugins → Add New
-            3. Click "Upload Plugin"
-            4. Select the ZIP file and click "Install Now"
-            5. Activate the plugin
-
-            ### Usage
-
-            In the Gutenberg editor:
-            1. Select Japanese text containing kanji
-            2. Click the "Furigana" button (language icon) in the toolbar
-            3. Furigana are automatically added
-            4. Click again to remove them
-
-            ---
-
-            📝 See the [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for more details.
+      - name: Upload individual dictionary files
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/dict/base.dat.gz
+            build/dict/cc.dat.gz
+            build/dict/check.dat.gz
+            build/dict/tid.dat.gz
+            build/dict/tid_map.dat.gz
+            build/dict/tid_pos.dat.gz
+            build/dict/unk.dat.gz
+            build/dict/unk_char.dat.gz
+            build/dict/unk_compat.dat.gz
+            build/dict/unk_invoke.dat.gz
+            build/dict/unk_map.dat.gz
+            build/dict/unk_pos.dat.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,40 @@
+/**
+ * Admin styles for WP Kakitai
+ */
+
+.wp-kakitai-admin-container {
+	max-width: 800px;
+	margin-top: 20px;
+}
+
+.wp-kakitai-admin-container .card {
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.wp-kakitai-admin-container .card h2 {
+	margin-top: 0;
+}
+
+.wp-kakitai-actions {
+	margin-top: 20px;
+}
+
+.wp-kakitai-actions form {
+	display: inline-block;
+}
+
+.wp-kakitai-actions .description {
+	margin-top: 10px;
+	font-style: italic;
+}
+
+/* Status icons */
+.form-table .dashicons {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+

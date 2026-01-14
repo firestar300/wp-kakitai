@@ -36,7 +36,7 @@
 		"phpspec/prophecy-phpunit": "^2.2",
 		"roave/security-advisories": "dev-latest",
 		"vimeo/psalm": "^5.25",
-		"wp-coding-standards/wpcs": "^3.0",
+		"wp-coding-standards/wpcs": "3.3.0",
 		"wp-phpunit/wp-phpunit": "^6.7",
 		"yoast/phpunit-polyfills": "^1.0"
 	},

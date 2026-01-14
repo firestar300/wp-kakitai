@@ -48,6 +48,7 @@ WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to auto
 1. Go to Plugins → Add New in your WordPress admin
 2. Search for "WP Kakitai"
 3. Click "Install Now" and then "Activate"
+4. **Important**: Go to Settings → WP Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
 
 = Manual Installation =
 
@@ -55,13 +56,13 @@ WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to auto
 2. Go to Plugins → Add New → Upload Plugin
 3. Choose the ZIP file and click "Install Now"
 4. Activate the plugin
+5. **Important**: Go to Settings → WP Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
 
-= From Source =
+= Why the Additional Download? =
 
-1. Clone the repository or download the source
-2. Run `npm install && npm run build`
-3. Upload the plugin folder to `/wp-content/plugins/`
-4. Activate the plugin through the 'Plugins' menu
+To keep the plugin lightweight and within WordPress.org size limits, the Japanese dictionary files (~18 MB) are not included in the plugin package. They are automatically downloaded from GitHub on first use.
+
+This is a one-time download that persists across plugin updates.
 
 == Usage ==
 
@@ -74,6 +75,14 @@ WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to auto
 7. Click the button again to remove the furigana
 
 == Frequently Asked Questions ==
+
+= Do I need to download anything after installing? =
+
+Yes, after activating the plugin, you need to download the Japanese dictionary files (~18 MB). Go to Settings → WP Kakitai and click "Download & Install Dictionaries". This is a one-time download that happens automatically.
+
+= Why aren't the dictionaries included? =
+
+To comply with WordPress.org's 10 MB plugin size limit, we host the dictionary files separately on GitHub. This keeps the plugin lightweight while still providing full functionality.
 
 = What are furigana? =
 
