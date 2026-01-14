@@ -1,7 +1,7 @@
 {
   "name": "wp-kakitai-landing",
   "version": "1.0.0",
-  "description": "Landing page for WP Kakitai WordPress plugin",
+  "description": "Landing page for Kakitai WordPress plugin",
   "type": "module",
   "scripts": {
     "dev": "vite",

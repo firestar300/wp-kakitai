@@ -125,7 +125,7 @@
   },
   "cta": {
     "title": "Ready to Get Started?",
-    "subtitle": "Download WP Kakitai and help learners read Japanese content with confidence.",
+    "subtitle": "Download Kakitai and help learners read Japanese content with confidence.",
     "downloadButton": "Download Plugin",
     "documentationButton": "View Documentation",
     "footer": "Free • Open Source • GPL-2.0 License"
@@ -149,6 +149,6 @@
       "license": "License (GPL-2.0)",
       "author": "Author"
     },
-    "copyright": "© 2025 WP Kakitai. Built with ❤️ for Japanese learners and students."
+    "copyright": "© 2026 Kakitai. Built with ❤️ for Japanese learners and students."
   }
 }

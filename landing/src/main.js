@@ -299,7 +299,7 @@ function initSmoothScroll() {
 // Console message
 function logConsoleMessage() {
   console.log(
-    '%cWP Kakitai 書きたい',
+    '%cKakitai 書きたい',
     'color: #0073aa; font-size: 20px; font-weight: bold;'
   );
   console.log(

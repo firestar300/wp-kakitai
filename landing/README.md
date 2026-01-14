@@ -1,6 +1,6 @@
-# WP Kakitai Landing Page
+# Kakitai Landing Page
 
-Landing page for the WP Kakitai WordPress plugin with SEO-friendly multilingual support.
+Landing page for the Kakitai WordPress plugin with SEO-friendly multilingual support.
 
 ## Features
 

@@ -47,7 +47,7 @@ function translateMetaTags(dom, translations, lang) {
   // Title
   const title = doc.querySelector('title');
   if (title) {
-    title.textContent = `WP Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`;
+    title.textContent = `Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`;
   }
 
   // Meta description
@@ -55,13 +55,13 @@ function translateMetaTags(dom, translations, lang) {
   if (metaDescription) {
     // Remove HTML tags from description
     const cleanDescription = translations.hero.description.replace(/<[^>]*>/g, '');
-    metaDescription.setAttribute('content', `WP Kakitai - ${cleanDescription}`);
+    metaDescription.setAttribute('content', `Kakitai - ${cleanDescription}`);
   }
 
   // Open Graph title
   const ogTitle = doc.querySelector('meta[property="og:title"]');
   if (ogTitle) {
-    ogTitle.setAttribute('content', `WP Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`);
+    ogTitle.setAttribute('content', `Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`);
   }
 
   // Open Graph description
@@ -74,7 +74,7 @@ function translateMetaTags(dom, translations, lang) {
   // Twitter title
   const twitterTitle = doc.querySelector('meta[name="twitter:title"]');
   if (twitterTitle) {
-    twitterTitle.setAttribute('content', `WP Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`);
+    twitterTitle.setAttribute('content', `Kakitai - ${translations.hero.title.line1} ${translations.hero.title.line2}`);
   }
 
   // Twitter description
