@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.7] - 2025-01-14
+
+### Changed
+
+- Remove 'WP' from plugin name to comply with WordPress.org requirements
+- Plugin name changed from 'WP Kakitai' to 'Kakitai - Japanese Furigana'
+- Updated all user-facing strings and documentation
+- Updated landing page with new plugin name
+
+### Fixed
+
+- Plugin now complies with WordPress.org naming restrictions
+- All references to plugin name updated consistently across codebase
+
 ## [1.0.0-alpha.6] - 2025-01-14
 
 ### Fixed
@@ -127,7 +141,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js polyfills: path, zlib, stream, buffer, util
 - Dictionary files automatically copied to build directory
 
-[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.6...HEAD
+[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.7...HEAD
+[1.0.0-alpha.7]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
 [1.0.0-alpha.6]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
 [1.0.0-alpha.5]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
 [1.0.0-alpha.4]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.3...v1.0.0-alpha.4
