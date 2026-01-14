@@ -34,10 +34,10 @@ class WP_Kakitai_Admin_Page {
 	 */
 	public static function add_admin_menu() {
 		add_options_page(
-			__( 'Kakitai Settings', 'wp-kakitai' ),
-			__( 'Kakitai', 'wp-kakitai' ),
+			__( 'Kakitai Settings', 'kakitai' ),
+			__( 'Kakitai', 'kakitai' ),
 			'manage_options',
-			'wp-kakitai',
+			'kakitai',
 			array( __CLASS__, 'render_admin_page' )
 		);
 	}
@@ -259,7 +259,7 @@ class WP_Kakitai_Admin_Page {
 			wp_safe_redirect(
 				add_query_arg(
 					array(
-						'page'               => 'wp-kakitai',
+						'page'               => 'kakitai',
 						'wp_kakitai_message' => 'dict_install_fail',
 						'wp_kakitai_type'    => 'error',
 						'error_message'      => rawurlencode( $result->get_error_message() ),
@@ -274,7 +274,7 @@ class WP_Kakitai_Admin_Page {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'               => 'wp-kakitai',
+					'page'               => 'kakitai',
 					'wp_kakitai_message' => 'dict_installed',
 					'wp_kakitai_type'    => 'success',
 					'_wpnonce'            => wp_create_nonce( 'wp_kakitai_admin_notice' ),
@@ -310,7 +310,7 @@ class WP_Kakitai_Admin_Page {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'               => 'wp-kakitai',
+					'page'               => 'kakitai',
 					'wp_kakitai_message' => $message,
 					'wp_kakitai_type'    => $type,
 					'_wpnonce'            => wp_create_nonce( 'wp_kakitai_admin_notice' ),

@@ -10,7 +10,7 @@
  * Plugin URI:        https://github.com/firestar300/wp-kakitai
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       wp-kakitai
+ * Text Domain:       kakitai
  *
  * @package WP_Kakitai
  */
@@ -60,11 +60,11 @@ function wp_kakitai_dict_notice() {
 		?>
 		<div class="notice notice-warning">
 			<p>
-				<strong><?php esc_html_e( 'Kakitai:', 'wp-kakitai' ); ?></strong>
+				<strong><?php esc_html_e( 'Kakitai:', 'kakitai' ); ?></strong>
 				<?php
 				printf(
 					/* translators: %s: settings page URL */
-					wp_kses_post( __( 'Japanese dictionaries are not installed. <a href="%s">Install them now</a> to use furigana features.', 'wp-kakitai' ) ),
+					wp_kses_post( __( 'Japanese dictionaries are not installed. <a href="%s">Install them now</a> to use furigana features.', 'kakitai' ) ),
 					esc_url( $settings_url )
 				);
 				?>
@@ -103,7 +103,7 @@ function wp_kakitai_register_script(): void {
 
 	wp_set_script_translations(
 		'wp-kakitai',
-		'wp-kakitai',
+		'kakitai',
 		WP_KAKITAI_DIR . 'languages'
 	);
 }
