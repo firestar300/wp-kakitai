@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.4] - 2025-01-14
+
+### Fixed
+
+- Fixed ZIP creation to exclude dictionary files for WordPress.org compatibility
+- Plugin ZIP now under 10MB limit (dictionaries hosted separately on GitHub Releases)
+
+### Changed
+
+- Improved release workflow to automatically create GitHub releases on tag push
+- Dictionary files are now downloaded from GitHub Releases instead of being included in plugin package
+
+## [1.0.0-alpha.3] - 2025-01-14
+
+### Added
+
+- External dictionary download system for WordPress.org compatibility
+- Admin page for dictionary management (Settings → WP Kakitai)
+- Automatic dictionary download from GitHub Releases
+- Dictionary installation status checking
+- Admin notices for missing dictionaries
+
+### Changed
+
+- Dictionary files (~18MB) are now hosted separately on GitHub Releases
+- Plugin package size reduced to comply with WordPress.org 10MB limit
+
 ## [1.0.0-alpha.2] - 2025-10-27
 
 ### Added
@@ -76,6 +103,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js polyfills: path, zlib, stream, buffer, util
 - Dictionary files automatically copied to build directory
 
-[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.2...HEAD
+[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.4...HEAD
+[1.0.0-alpha.4]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.3...v1.0.0-alpha.4
+[1.0.0-alpha.3]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.2...v1.0.0-alpha.3
 [1.0.0-alpha.2]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.1...v1.0.0-alpha.2
 [1.0.0-alpha.1]: https://github.com/firestar300/wp-kakitai/releases/tag/v1.0.0-alpha.1
