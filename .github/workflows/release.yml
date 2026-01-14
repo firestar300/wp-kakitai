@@ -29,11 +29,59 @@ jobs:
 
       - name: Create plugin ZIP (without dictionaries)
         run: |
-          # Create ZIP using WordPress scripts with .distignore
-          npx wp-scripts plugin-zip
+          # Create temporary directory for ZIP contents
+          mkdir -p wp-kakitai-temp
 
-          # The ZIP will be in the root directory
-          mv wp-kakitai.zip wp-kakitai-wordpress-org.zip
+          # Copy files excluding build/dict
+          rsync -av --exclude='build/dict' \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='vendor' \
+            --exclude='landing' \
+            --exclude='dist' \
+            --exclude='tests' \
+            --exclude='scripts' \
+            --exclude='*.md' \
+            --exclude='CHANGELOG.md' \
+            --exclude='CONTRIBUTING.md' \
+            --exclude='LICENSE' \
+            --exclude='QUICK_START.md' \
+            --exclude='RELEASE.md' \
+            --exclude='.editorconfig' \
+            --exclude='.eslintignore' \
+            --exclude='.eslintrc' \
+            --exclude='.gitattributes' \
+            --exclude='.gitignore' \
+            --exclude='.distignore' \
+            --exclude='.phpcs.xml.dist' \
+            --exclude='composer.json' \
+            --exclude='composer.lock' \
+            --exclude='grumphp.yml' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='phpcs.xml.dist' \
+            --exclude='webpack.config.js' \
+            --exclude='wp-cli.yml' \
+            --exclude='wp-env.json' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='*.log' \
+            --exclude='*.zip' \
+            ./ wp-kakitai-temp/wp-kakitai/
+
+          # Create ZIP file
+          cd wp-kakitai-temp
+          zip -r ../wp-kakitai-wordpress-org.zip wp-kakitai/
+          cd ..
+
+          # Cleanup
+          rm -rf wp-kakitai-temp
+
+          # Verify ZIP size and contents
+          echo "ZIP created: $(ls -lh wp-kakitai-wordpress-org.zip | awk '{print $5}')"
+          echo "Checking for dictionary files in ZIP:"
+          unzip -l wp-kakitai-wordpress-org.zip | grep "build/dict" || echo "✅ No dictionary files found in ZIP"
 
       - name: Create dictionary archive
         run: |
