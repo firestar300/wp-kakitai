@@ -81,7 +81,33 @@ jobs:
             echo "RELEASE_NOTES"
           } >> $GITHUB_OUTPUT
 
-      - name: Create or Update Release
+      - name: Delete existing release if present
+        uses: actions/github-script@v7
+        continue-on-error: true
+        with:
+          script: |
+            const tag = '${{ steps.get_version.outputs.tag }}';
+            try {
+              const release = await github.rest.repos.getReleaseByTag({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag: tag
+              });
+              console.log(`Deleting existing release ${release.data.id} for tag ${tag}`);
+              await github.rest.repos.deleteRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                release_id: release.data.id
+              });
+            } catch (error) {
+              if (error.status === 404) {
+                console.log(`No existing release found for tag ${tag}`);
+              } else {
+                console.log(`Error checking for existing release: ${error.message}`);
+              }
+            }
+
+      - name: Create Release and Upload files
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get_version.outputs.tag }}
@@ -89,7 +115,6 @@ jobs:
           body: ${{ steps.release_notes.outputs.notes }}
           draft: false
           prerelease: ${{ contains(steps.get_version.outputs.version, 'alpha') || contains(steps.get_version.outputs.version, 'beta') || contains(steps.get_version.outputs.version, 'rc') }}
-          overwrite: true
           files: |
             wp-kakitai-wordpress-org.zip
             wp-kakitai-dictionaries.tar.gz
