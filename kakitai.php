@@ -56,7 +56,7 @@ function wp_kakitai_dict_notice() {
 
 	// Check if dictionaries are installed
 	if ( ! WP_Kakitai_Dictionary_Manager::are_dictionaries_installed() ) {
-		$settings_url = admin_url( 'options-general.php?page=wp-kakitai' );
+		$settings_url = admin_url( 'options-general.php?page=kakitai' );
 		?>
 		<div class="notice notice-warning">
 			<p>

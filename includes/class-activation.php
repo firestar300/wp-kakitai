@@ -60,7 +60,7 @@ class WP_Kakitai_Activation {
 		$status = WP_Kakitai_Dictionary_Manager::get_status();
 
 		if ( ! $status['installed'] ) {
-			$settings_url = admin_url( 'options-general.php?page=wp-kakitai' );
+			$settings_url = admin_url( 'options-general.php?page=kakitai' );
 			?>
 			<div class="notice notice-warning is-dismissible">
 				<p>

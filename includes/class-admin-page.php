@@ -49,7 +49,7 @@ class WP_Kakitai_Admin_Page {
 	 * @return void
 	 */
 	public static function enqueue_admin_scripts( $hook ) {
-		if ( 'settings_page_wp-kakitai' !== $hook ) {
+		if ( 'settings_page_kakitai' !== $hook ) {
 			return;
 		}
 
