@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.5] - 2025-01-14
+
+### Fixed
+
+- Decompress dictionary files automatically after download (WordPress.org doesn't allow compressed .gz files)
+- Add nonce verification for admin notice redirects
+- Exclude .wp-env.json from plugin ZIP
+- Use wp_json_encode() instead of json_encode() for better WordPress compatibility
+- Use WP_Filesystem for all file operations
+- Use wp_delete_file() for proper cleanup
+
+### Changed
+
+- Dictionary files are now stored as uncompressed .dat files (instead of .gz)
+- Improved file handling with WordPress Filesystem API
+
 ## [1.0.0-alpha.4] - 2025-01-14
 
 ### Fixed
@@ -103,7 +119,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js polyfills: path, zlib, stream, buffer, util
 - Dictionary files automatically copied to build directory
 
-[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.4...HEAD
+[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.5...HEAD
+[1.0.0-alpha.5]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
 [1.0.0-alpha.4]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.3...v1.0.0-alpha.4
 [1.0.0-alpha.3]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.2...v1.0.0-alpha.3
 [1.0.0-alpha.2]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.1...v1.0.0-alpha.2
