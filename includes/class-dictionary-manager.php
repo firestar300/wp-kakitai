@@ -244,8 +244,10 @@ class WP_Kakitai_Dictionary_Manager {
 			);
 		}
 
-		// Decompress using gzuncompress (PHP function, no WordPress alternative).
-		$uncompressed_data = gzuncompress( $compressed_data );
+		// Decompress using gzdecode() which handles .gz files correctly.
+		// gzuncompress() only works with zlib format (no gzip header).
+		// gzdecode() handles gzip format (.gz files) properly.
+		$uncompressed_data = gzdecode( $compressed_data );
 		if ( false === $uncompressed_data ) {
 			if ( file_exists( $temp_file ) ) {
 				wp_delete_file( $temp_file );
