@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-01-14
+
+### Changed
+
+- Migrated text domain from 'wp-kakitai' to 'kakitai' for consistency with new plugin name
+- Updated admin page slug from 'wp-kakitai' to 'kakitai'
+- All translation function calls now use 'kakitai' text domain
+
+### Fixed
+
+- Text domain now matches plugin name and WordPress.org requirements
+- Consistent text domain usage across all PHP files
+
 ## [1.0.0] - 2025-01-14
 
 ### Changed
@@ -157,7 +170,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js polyfills: path, zlib, stream, buffer, util
 - Dictionary files automatically copied to build directory
 
-[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/firestar300/wp-kakitai/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.7...v1.0.0
 [1.0.0-alpha.7]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
 [1.0.0-alpha.6]: https://github.com/firestar300/wp-kakitai/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
