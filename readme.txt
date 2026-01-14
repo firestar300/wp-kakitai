@@ -1,4 +1,4 @@
-=== Kakitai - Japanese Furigana ===
+=== Kakitai ===
 Contributors:      firestar300
 Tags:              japanese, furigana, kanji, gutenberg
 Requires at least: 6.7

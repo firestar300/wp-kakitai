@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Kakitai - Japanese Furigana
+ * Plugin Name:       Kakitai
  * Description:       Provide Furigana for Japanese text.
  * Version:           1.0.1
  * Requires at least: 6.7
