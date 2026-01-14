@@ -37,7 +37,7 @@ class WP_Kakitai_Dictionary_Manager {
 	const DICT_FOLDER = 'dict';
 
 	/**
-	 * Dictionary files to download.
+	 * Dictionary files to download (compressed).
 	 *
 	 * @var array
 	 */
@@ -55,6 +55,20 @@ class WP_Kakitai_Dictionary_Manager {
 		'unk_map.dat.gz',
 		'unk_pos.dat.gz',
 	);
+
+	/**
+	 * Get uncompressed dictionary filenames.
+	 *
+	 * @return array Array of .dat filenames (without .gz).
+	 */
+	private static function get_uncompressed_filenames() {
+		return array_map(
+			function ( $file ) {
+				return str_replace( '.gz', '', $file );
+			},
+			self::DICT_FILES
+		);
+	}
 
 	/**
 	 * Get the dictionary directory path.
@@ -77,7 +91,8 @@ class WP_Kakitai_Dictionary_Manager {
 			return false;
 		}
 
-		foreach ( self::DICT_FILES as $file ) {
+		// Check for uncompressed .dat files (not .gz files).
+		foreach ( self::get_uncompressed_filenames() as $file ) {
 			if ( ! file_exists( $dict_dir . '/' . $file ) ) {
 				return false;
 			}
@@ -170,13 +185,14 @@ class WP_Kakitai_Dictionary_Manager {
 			$filename
 		);
 
-		// Download the file.
-		$response = wp_remote_get(
+		// Download the compressed file to a temporary location.
+		$temp_file = get_temp_dir() . $filename;
+		$response  = wp_remote_get(
 			$download_url,
 			array(
 				'timeout'  => 300, // 5 minutes.
 				'stream'   => true,
-				'filename' => self::get_dict_dir() . '/' . $filename,
+				'filename' => $temp_file,
 			)
 		);
 
@@ -194,6 +210,9 @@ class WP_Kakitai_Dictionary_Manager {
 
 		$response_code = wp_remote_retrieve_response_code( $response );
 		if ( 200 !== $response_code ) {
+			if ( file_exists( $temp_file ) ) {
+				wp_delete_file( $temp_file );
+			}
 			return new WP_Error(
 				'download_error',
 				sprintf(
@@ -203,6 +222,63 @@ class WP_Kakitai_Dictionary_Manager {
 					$response_code
 				)
 			);
+		}
+
+		// Decompress the file.
+		$uncompressed_filename = str_replace( '.gz', '', $filename );
+		$uncompressed_path     = self::get_dict_dir() . '/' . $uncompressed_filename;
+
+		// Read compressed file using WP_Filesystem.
+		$compressed_data = $wp_filesystem->get_contents( $temp_file );
+		if ( false === $compressed_data ) {
+			if ( file_exists( $temp_file ) ) {
+				wp_delete_file( $temp_file );
+			}
+			return new WP_Error(
+				'read_error',
+				sprintf(
+					/* translators: %s: filename */
+					__( 'Failed to read downloaded file: %s', 'wp-kakitai' ),
+					$filename
+				)
+			);
+		}
+
+		// Decompress using gzuncompress (PHP function, no WordPress alternative).
+		$uncompressed_data = gzuncompress( $compressed_data );
+		if ( false === $uncompressed_data ) {
+			if ( file_exists( $temp_file ) ) {
+				wp_delete_file( $temp_file );
+			}
+			return new WP_Error(
+				'decompress_error',
+				sprintf(
+					/* translators: %s: filename */
+					__( 'Failed to decompress file: %s', 'wp-kakitai' ),
+					$filename
+				)
+			);
+		}
+
+		// Write uncompressed file using WP_Filesystem.
+		$written = $wp_filesystem->put_contents( $uncompressed_path, $uncompressed_data, FS_CHMOD_FILE );
+		if ( ! $written ) {
+			if ( file_exists( $temp_file ) ) {
+				wp_delete_file( $temp_file );
+			}
+			return new WP_Error(
+				'write_error',
+				sprintf(
+					/* translators: %s: filename */
+					__( 'Failed to write decompressed file: %s', 'wp-kakitai' ),
+					$uncompressed_filename
+				)
+			);
+		}
+
+		// Clean up temporary compressed file.
+		if ( file_exists( $temp_file ) ) {
+			wp_delete_file( $temp_file );
 		}
 
 		return true;

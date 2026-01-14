@@ -92,7 +92,7 @@ function wp_kakitai_register_script(): void {
 
 	wp_add_inline_script(
 		'wp-kakitai',
-		'var wpKakitai = ' . json_encode(
+		'var wpKakitai = ' . wp_json_encode(
 			array(
 				'pluginUrl' => WP_KAKITAI_URL,
 				'pluginDir' => WP_KAKITAI_DIR,
@@ -131,7 +131,7 @@ add_action( 'enqueue_block_editor_assets', 'wp_kakitai_enqueue_script' );
  *
  * @return array
  */
-function allow_ruby_attributes( $tags, $context ) {
+function wp_kakitai_allow_ruby_attributes( $tags, $context ) {
 	if ( 'post' === $context ) {
 		$tags['ruby'] = [];
 		$tags['rp']   = [];
@@ -141,4 +141,4 @@ function allow_ruby_attributes( $tags, $context ) {
 	return $tags;
 }
 
-add_filter( 'wp_kses_allowed_html', 'allow_ruby_attributes', 10, 2 );
+add_filter( 'wp_kses_allowed_html', 'wp_kakitai_allow_ruby_attributes', 10, 2 );

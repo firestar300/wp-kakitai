@@ -64,6 +64,7 @@ jobs:
             --exclude='webpack.config.js' \
             --exclude='wp-cli.yml' \
             --exclude='wp-env.json' \
+            --exclude='.wp-env.json' \
             --exclude='.DS_Store' \
             --exclude='Thumbs.db' \
             --exclude='*.log' \
