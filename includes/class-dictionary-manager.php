@@ -118,7 +118,7 @@ class WP_Kakitai_Dictionary_Manager {
 		if ( ! WP_Filesystem() ) {
 			return new WP_Error(
 				'filesystem_error',
-				__( 'Could not initialize filesystem.', 'wp-kakitai' )
+				__( 'Could not initialize filesystem.', 'kakitai' )
 			);
 		}
 
@@ -130,7 +130,7 @@ class WP_Kakitai_Dictionary_Manager {
 					'mkdir_failed',
 					sprintf(
 						/* translators: %s: directory path */
-						__( 'Could not create directory: %s', 'wp-kakitai' ),
+						__( 'Could not create directory: %s', 'kakitai' ),
 						$dict_dir
 					)
 				);
@@ -151,7 +151,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'download_failed',
 				sprintf(
 					/* translators: %s: error messages */
-					__( 'Failed to download dictionary files: %s', 'wp-kakitai' ),
+					__( 'Failed to download dictionary files: %s', 'kakitai' ),
 					implode( ', ', $errors )
 				)
 			);
@@ -201,7 +201,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'download_error',
 				sprintf(
 					/* translators: 1: filename, 2: error message */
-					__( 'Failed to download %1$s: %2$s', 'wp-kakitai' ),
+					__( 'Failed to download %1$s: %2$s', 'kakitai' ),
 					$filename,
 					$response->get_error_message()
 				)
@@ -217,7 +217,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'download_error',
 				sprintf(
 					/* translators: 1: filename, 2: HTTP status code */
-					__( 'Failed to download %1$s: HTTP %2$d', 'wp-kakitai' ),
+					__( 'Failed to download %1$s: HTTP %2$d', 'kakitai' ),
 					$filename,
 					$response_code
 				)
@@ -238,7 +238,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'read_error',
 				sprintf(
 					/* translators: %s: filename */
-					__( 'Failed to read downloaded file: %s', 'wp-kakitai' ),
+					__( 'Failed to read downloaded file: %s', 'kakitai' ),
 					$filename
 				)
 			);
@@ -256,7 +256,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'decompress_error',
 				sprintf(
 					/* translators: %s: filename */
-					__( 'Failed to decompress file: %s', 'wp-kakitai' ),
+					__( 'Failed to decompress file: %s', 'kakitai' ),
 					$filename
 				)
 			);
@@ -272,7 +272,7 @@ class WP_Kakitai_Dictionary_Manager {
 				'write_error',
 				sprintf(
 					/* translators: %s: filename */
-					__( 'Failed to write decompressed file: %s', 'wp-kakitai' ),
+					__( 'Failed to write decompressed file: %s', 'kakitai' ),
 					$uncompressed_filename
 				)
 			);
