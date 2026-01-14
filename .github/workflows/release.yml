@@ -1,8 +1,9 @@
 name: Release Plugin
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build-and-release:
@@ -11,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -26,9 +29,6 @@ jobs:
 
       - name: Create plugin ZIP (without dictionaries)
         run: |
-          # Install @wordpress/env which provides wp-scripts
-          npm install -g @wordpress/env
-
           # Create ZIP using WordPress scripts with .distignore
           npx wp-scripts plugin-zip
 
@@ -41,19 +41,57 @@ jobs:
           tar -czf ../wp-kakitai-dictionaries.tar.gz dict/
           cd ..
 
-      - name: Upload plugin ZIP to release
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          VERSION=${VERSION#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+          echo "Tag: ${GITHUB_REF#refs/tags/}"
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          VERSION=${TAG#v}
+          
+          {
+            echo 'notes<<RELEASE_NOTES'
+            echo "## Release $TAG"
+            echo ""
+            echo "### Installation"
+            echo ""
+            echo "1. Install the plugin from WordPress.org (or download the ZIP below)"
+            echo "2. Activate the plugin"
+            echo "3. Go to Settings -> WP Kakitai"
+            echo '4. Click "Download & Install Dictionaries" to download dictionary files (~18 MB)'
+            echo ""
+            echo "### Included Files"
+            echo ""
+            echo "- wp-kakitai-wordpress-org.zip: Plugin for WordPress.org (without dictionaries)"
+            echo "- wp-kakitai-dictionaries.tar.gz: Complete dictionary archive"
+            echo "- Individual dictionary files (12 .dat.gz files)"
+            echo ""
+            echo "### Links"
+            echo ""
+            echo "- [Documentation](https://github.com/firestar300/wp-kakitai#readme)"
+            echo "- [Issues](https://github.com/firestar300/wp-kakitai/issues)"
+            echo "RELEASE_NOTES"
+          } >> $GITHUB_OUTPUT
+
+      - name: Create Release and Upload files
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.get_version.outputs.tag }}
+          name: Release ${{ steps.get_version.outputs.tag }}
+          body: ${{ steps.release_notes.outputs.notes }}
+          draft: false
+          prerelease: ${{ contains(steps.get_version.outputs.version, 'alpha') || contains(steps.get_version.outputs.version, 'beta') || contains(steps.get_version.outputs.version, 'rc') }}
           files: |
             wp-kakitai-wordpress-org.zip
             wp-kakitai-dictionaries.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload individual dictionary files
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
             build/dict/base.dat.gz
             build/dict/cc.dat.gz
             build/dict/check.dat.gz
