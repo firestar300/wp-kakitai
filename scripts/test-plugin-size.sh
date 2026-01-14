@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🧪 Testing WP Kakitai Plugin ZIP Size"
+echo "🧪 Testing Kakitai Plugin ZIP Size"
 echo "======================================"
 echo ""
 
@@ -118,4 +118,3 @@ fi
 
 echo ""
 echo "🎉 Test completed successfully!"
-

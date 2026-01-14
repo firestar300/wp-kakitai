@@ -1,6 +1,6 @@
-# Contributing to WP Kakitai
+# Contributing to Kakitai
 
-Thank you for considering contributing to WP Kakitai! This document outlines the process and guidelines for contributing.
+Thank you for considering contributing to Kakitai! This document outlines the process and guidelines for contributing.
 
 ## 🚀 Getting Started
 
@@ -212,7 +212,7 @@ If applicable, add screenshots.
 - WordPress version:
 - PHP version:
 - Browser and version:
-- WP Kakitai version:
+- Kakitai version:
 ```
 
 ## 💡 Feature Requests
@@ -278,7 +278,7 @@ If you have questions:
 
 ## 🙏 Thank You
 
-Every contribution helps make WP Kakitai better. Whether it's code, documentation, bug reports, or feature ideas – thank you for being part of this project!
+Every contribution helps make Kakitai better. Whether it's code, documentation, bug reports, or feature ideas – thank you for being part of this project!
 
 ---
 

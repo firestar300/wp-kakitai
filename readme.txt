@@ -1,4 +1,4 @@
-=== WP Kakitai ===
+=== Kakitai - Japanese Furigana ===
 Contributors:      firestar300
 Tags:              japanese, furigana, kanji, gutenberg
 Requires at least: 6.7
@@ -12,7 +12,7 @@ Automatically add furigana (pronunciation guides) to Japanese kanji in the Guten
 
 == Description ==
 
-**WP Kakitai** makes reading Japanese easier by automatically adding furigana (pronunciation guides in hiragana) to kanji characters. Perfect for Japanese learners, educators, and content creators.
+**Kakitai** makes reading Japanese easier by automatically adding furigana (pronunciation guides in hiragana) to kanji characters. Perfect for Japanese learners, educators, and content creators.
 
 = Features =
 
@@ -26,7 +26,7 @@ Automatically add furigana (pronunciation guides) to Japanese kanji in the Guten
 
 = How It Works =
 
-WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to automatically detect kanji and add their hiragana readings. The plugin generates standard HTML ruby tags that are supported by all modern browsers.
+Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to automatically detect kanji and add their hiragana readings. The plugin generates standard HTML ruby tags that are supported by all modern browsers.
 
 = Example =
 
@@ -46,9 +46,9 @@ WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to auto
 = Automatic Installation =
 
 1. Go to Plugins → Add New in your WordPress admin
-2. Search for "WP Kakitai"
+2. Search for "Kakitai"
 3. Click "Install Now" and then "Activate"
-4. **Important**: Go to Settings → WP Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
+4. **Important**: Go to Settings → Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
 
 = Manual Installation =
 
@@ -56,7 +56,7 @@ WP Kakitai uses Kuromoji.js, a powerful Japanese morphological analyzer, to auto
 2. Go to Plugins → Add New → Upload Plugin
 3. Choose the ZIP file and click "Install Now"
 4. Activate the plugin
-5. **Important**: Go to Settings → WP Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
+5. **Important**: Go to Settings → Kakitai and click "Download & Install Dictionaries" to download the Japanese language data (~18 MB)
 
 = Why the Additional Download? =
 
@@ -78,7 +78,7 @@ This is a one-time download that persists across plugin updates.
 
 = Do I need to download anything after installing? =
 
-Yes, after activating the plugin, you need to download the Japanese dictionary files (~18 MB). Go to Settings → WP Kakitai and click "Download & Install Dictionaries". This is a one-time download that happens automatically.
+Yes, after activating the plugin, you need to download the Japanese dictionary files (~18 MB). Go to Settings → Kakitai and click "Download & Install Dictionaries". This is a one-time download that happens automatically.
 
 = Why aren't the dictionaries included? =
 
@@ -90,7 +90,7 @@ Furigana (振り仮名) are small hiragana characters placed above or beside kan
 
 = Which blocks are supported? =
 
-Currently, WP Kakitai supports Paragraph and Heading blocks (H1-H6). Support for more blocks may be added in future versions.
+Currently, Kakitai supports Paragraph and Heading blocks (H1-H6). Support for more blocks may be added in future versions.
 
 = Does this work with any Japanese text? =
 

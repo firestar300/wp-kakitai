@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       WP Kakitai
+ * Plugin Name:       Kakitai - Japanese Furigana
  * Description:       Provide Furigana for Japanese text.
  * Version:           1.0.0-alpha.6
  * Requires at least: 6.7
@@ -60,7 +60,7 @@ function wp_kakitai_dict_notice() {
 		?>
 		<div class="notice notice-warning">
 			<p>
-				<strong><?php esc_html_e( 'WP Kakitai:', 'wp-kakitai' ); ?></strong>
+				<strong><?php esc_html_e( 'Kakitai:', 'wp-kakitai' ); ?></strong>
 				<?php
 				printf(
 					/* translators: %s: settings page URL */

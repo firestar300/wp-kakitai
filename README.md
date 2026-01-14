@@ -1,6 +1,6 @@
-# WP Kakitai (書きたい)
+# Kakitai (書きたい)
 
-[![WP Kakitai](./.github/banner.png)](https://github.com/firestar300/wp-kakitai/)
+[![Kakitai](./.github/banner.png)](https://github.com/firestar300/wp-kakitai/)
 
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-blue.svg)](https://github.com/firestar300/wp-kakitai/blob/main/LICENSE)
 [![WordPress](https://img.shields.io/badge/WordPress-6.7%2B-blue.svg)](https://wordpress.org/)
@@ -9,7 +9,7 @@
 
 ## 📖 Description
 
-**WP Kakitai** is a WordPress plugin that makes reading Japanese easier by automatically adding furigana (pronunciation guides in hiragana) to kanji. The plugin integrates directly into the Gutenberg editor and uses the Kuromoji library for accurate Japanese morphological analysis.
+**Kakitai** is a WordPress plugin that makes reading Japanese easier by automatically adding furigana (pronunciation guides in hiragana) to kanji. The plugin integrates directly into the Gutenberg editor and uses the Kuromoji library for accurate Japanese morphological analysis.
 
 ### ✨ Features
 

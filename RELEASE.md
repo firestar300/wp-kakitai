@@ -1,6 +1,6 @@
 # Release Process
 
-This document describes the release process for WP Kakitai.
+This document describes the release process for Kakitai.
 
 ## 🚀 Automated Release via GitHub Actions
 

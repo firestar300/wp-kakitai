@@ -25,7 +25,7 @@ class WP_Kakitai_Activation {
 		if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
 			wp_die(
-				esc_html__( 'WP Kakitai requires PHP 7.4 or higher.', 'wp-kakitai' ),
+				esc_html__( 'Kakitai requires PHP 7.4 or higher.', 'wp-kakitai' ),
 				esc_html__( 'Plugin Activation Error', 'wp-kakitai' ),
 				array( 'back_link' => true )
 			);
@@ -35,7 +35,7 @@ class WP_Kakitai_Activation {
 		if ( version_compare( get_bloginfo( 'version' ), '6.7', '<' ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
 			wp_die(
-				esc_html__( 'WP Kakitai requires WordPress 6.7 or higher.', 'wp-kakitai' ),
+				esc_html__( 'Kakitai requires WordPress 6.7 or higher.', 'wp-kakitai' ),
 				esc_html__( 'Plugin Activation Error', 'wp-kakitai' ),
 				array( 'back_link' => true )
 			);
@@ -64,7 +64,7 @@ class WP_Kakitai_Activation {
 			?>
 			<div class="notice notice-warning is-dismissible">
 				<p>
-					<strong><?php esc_html_e( 'WP Kakitai is almost ready!', 'wp-kakitai' ); ?></strong>
+					<strong><?php esc_html_e( 'Kakitai is almost ready!', 'wp-kakitai' ); ?></strong>
 				</p>
 				<p>
 					<?php
@@ -81,7 +81,7 @@ class WP_Kakitai_Activation {
 			?>
 			<div class="notice notice-success is-dismissible">
 				<p>
-					<strong><?php esc_html_e( 'WP Kakitai activated successfully!', 'wp-kakitai' ); ?></strong>
+					<strong><?php esc_html_e( 'Kakitai activated successfully!', 'wp-kakitai' ); ?></strong>
 				</p>
 				<p>
 					<?php esc_html_e( 'You can now add furigana to Japanese text in the Gutenberg editor.', 'wp-kakitai' ); ?>

@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - External dictionary download system for WordPress.org compatibility
-- Admin page for dictionary management (Settings → WP Kakitai)
+- Admin page for dictionary management (Settings → Kakitai)
 - Automatic dictionary download from GitHub Releases
 - Dictionary installation status checking
 - Admin notices for missing dictionaries

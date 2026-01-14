@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin page for WP Kakitai settings and dictionary management.
+ * Admin page for Kakitai settings and dictionary management.
  *
  * @package WP_Kakitai
  */
@@ -34,8 +34,8 @@ class WP_Kakitai_Admin_Page {
 	 */
 	public static function add_admin_menu() {
 		add_options_page(
-			__( 'WP Kakitai Settings', 'wp-kakitai' ),
-			__( 'WP Kakitai', 'wp-kakitai' ),
+			__( 'Kakitai Settings', 'wp-kakitai' ),
+			__( 'Kakitai', 'wp-kakitai' ),
 			'manage_options',
 			'wp-kakitai',
 			array( __CLASS__, 'render_admin_page' )
@@ -172,11 +172,11 @@ class WP_Kakitai_Admin_Page {
 				</div>
 
 				<div class="card">
-					<h2><?php esc_html_e( 'About WP Kakitai', 'wp-kakitai' ); ?></h2>
+					<h2><?php esc_html_e( 'About Kakitai', 'wp-kakitai' ); ?></h2>
 					<p>
 						<?php
 						esc_html_e(
-							'WP Kakitai automatically adds furigana (pronunciation guides) to Japanese kanji in the Gutenberg editor.',
+							'Kakitai automatically adds furigana (pronunciation guides) to Japanese kanji in the Gutenberg editor.',
 							'wp-kakitai'
 						);
 						?>
