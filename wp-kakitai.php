@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       WP Kakitai
  * Description:       Provide Furigana for Japanese text.
- * Version:           1.0.0-alpha.5
+ * Version:           1.0.0-alpha.6
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            firestar300
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants
-define( 'WP_KAKITAI_VERSION', '1.0.0-alpha.5' );
+define( 'WP_KAKITAI_VERSION', '1.0.0-alpha.6' );
 define( 'WP_KAKITAI_URL', plugin_dir_url( __FILE__ ) );
 define( 'WP_KAKITAI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_KAKITAI_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
