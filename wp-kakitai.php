@@ -25,6 +25,55 @@ define( 'WP_KAKITAI_URL', plugin_dir_url( __FILE__ ) );
 define( 'WP_KAKITAI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_KAKITAI_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
+// Load required classes
+require_once WP_KAKITAI_DIR . 'includes/class-dictionary-manager.php';
+require_once WP_KAKITAI_DIR . 'includes/class-admin-page.php';
+require_once WP_KAKITAI_DIR . 'includes/class-activation.php';
+
+// Register activation hook
+register_activation_hook( __FILE__, array( 'WP_Kakitai_Activation', 'activate' ) );
+
+// Initialize admin functionality
+if ( is_admin() ) {
+	WP_Kakitai_Admin_Page::init();
+	add_action( 'admin_notices', array( 'WP_Kakitai_Activation', 'activation_notice' ) );
+}
+
+// Add admin notice if dictionaries are not installed
+add_action( 'admin_notices', 'wp_kakitai_dict_notice' );
+
+/**
+ * Display admin notice if dictionaries are not installed.
+ *
+ * @return void
+ */
+function wp_kakitai_dict_notice() {
+	// Only show on edit screens
+	$screen = get_current_screen();
+	if ( ! $screen || ! in_array( $screen->base, array( 'post', 'page' ), true ) ) {
+		return;
+	}
+
+	// Check if dictionaries are installed
+	if ( ! WP_Kakitai_Dictionary_Manager::are_dictionaries_installed() ) {
+		$settings_url = admin_url( 'options-general.php?page=wp-kakitai' );
+		?>
+		<div class="notice notice-warning">
+			<p>
+				<strong><?php esc_html_e( 'WP Kakitai:', 'wp-kakitai' ); ?></strong>
+				<?php
+				printf(
+					/* translators: %s: settings page URL */
+					wp_kses_post( __( 'Japanese dictionaries are not installed. <a href="%s">Install them now</a> to use furigana features.', 'wp-kakitai' ) ),
+					esc_url( $settings_url )
+				);
+				?>
+			</p>
+		</div>
+		<?php
+	}
+}
+
 /**
  * Registers the plugin script.
  *
